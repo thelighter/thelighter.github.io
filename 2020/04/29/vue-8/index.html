@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN,en">
+<head><meta name="generator" content="Hexo 3.8.0">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7384725227124412",
+          enable_page_level_ads: true
+     });
+</script>
+
+<script data-ad-client="ca-pub-7384725227124412" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137361931-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-137361931-1');
+</script>
+
+
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css">
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fav.png?v=7.0.0">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+
+  <meta name="description" content="vue.config.js 文件解析">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue配置文件config说明">
+<meta property="og:url" content="https://thelighter.github.io/2020/04/29/vue-8/index.html">
+<meta property="og:site_name" content="python爱好者">
+<meta property="og:description" content="vue.config.js 文件解析">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-27T12:53:11.550Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue配置文件config说明">
+<meta name="twitter:description" content="vue.config.js 文件解析">
+
+
+
+
+
+
+  <link rel="canonical" href="https://thelighter.github.io/2020/04/29/vue-8/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vue配置文件config说明 | python爱好者</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<amp-auto-ads type="adsense" data-ad-client="ca-pub-7384725227124412">
+</amp-auto-ads>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">python爱好者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">专注于python 全栈开发<br></h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-coding">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/coding/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>程序员指南</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-resume">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/resume" rel="section"><i class="menu-item-icon fa fa-fw fa-star"></i> <br>resume</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-github">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="https://github.com/thelighter" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-github"></i> <br>github</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+   
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://thelighter.github.io/2020/04/29/vue-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小伟科技">
+      <meta itemprop="description" content="一个专注于python编程，网站开发，app开发的网站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="python爱好者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">vue配置文件config说明
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+        
+          <i class="fa fa-thumb-tack"></i>
+          <font color="green">置顶</font>
+          <span class="post-meta-divider">|</span>
+        
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-29 22:18:11" itemprop="dateCreated datePublished" datetime="2020-04-29T22:18:11+08:00">2020-04-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-07-27 20:53:11" itemprop="dateModified" datetime="2020-07-27T20:53:11+08:00">2020-07-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>vue.config.js 文件解析<br><a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br></pre></td><td class="code"><pre><span class="line">// const path = require(&apos;path&apos;);</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  /** 区分打包环境与开发环境</span><br><span class="line">   * process.env.NODE_ENV===&apos;production&apos;  (打包环境)</span><br><span class="line">   * process.env.NODE_ENV===&apos;development&apos; (开发环境)</span><br><span class="line">   * baseUrl: process.env.NODE_ENV===&apos;production&apos;?&quot;https://xxx&quot;:&apos;&apos;,</span><br><span class="line">   */</span><br><span class="line">  // 项目部署的基础路径</span><br><span class="line">  // 我们默认假设你的应用将会部署在域名的根部,</span><br><span class="line">  // 例如 https://www.my-app.com/</span><br><span class="line">  // 如果你的应用部署在一个子路径下，那么你需要在这里</span><br><span class="line">  // 指定子路径。比如将你的应用部署在</span><br><span class="line">  // https://www.foobar.com/my-app/</span><br><span class="line">  // 那么将这个值改为 &apos;/my-app/&apos;</span><br><span class="line"> </span><br><span class="line">  //baseUrl: &apos;/&apos;,//vue-cli3.3以下版本使用</span><br><span class="line">  publicPath: &apos;/&apos;,//vue-cli3.3+新版本使用</span><br><span class="line"> </span><br><span class="line">  // 构建好的文件输出到哪里</span><br><span class="line">  outputDir: &quot;dist&quot;,</span><br><span class="line"> </span><br><span class="line">  // assetsDir: &quot;base&quot; //静态资源打包地址</span><br><span class="line"> </span><br><span class="line">  //以多页模式构建应用程序。</span><br><span class="line">  pages: undefined,</span><br><span class="line"> </span><br><span class="line">  // 是否在保存时使用‘eslint-loader’进行检查 // 有效值: true | false | &apos;error&apos;</span><br><span class="line">  // 当设置为‘error’时，检查出的错误会触发编译失败</span><br><span class="line">  lintOnSave: true,</span><br><span class="line"> </span><br><span class="line">  // 使用带有浏览器内编译器的完整构建版本,是否使用包含运行时编译器的 Vue 构建版本</span><br><span class="line">  runtimeCompiler: false,</span><br><span class="line"> </span><br><span class="line">  // babel-loader默认会跳过`node_modules`依赖. // 通过这个选项可以显示转译一个依赖</span><br><span class="line">  // 默认babel-loader忽略mode_modules，这里可增加例外的依赖包名</span><br><span class="line">  transpileDependencies: [],</span><br><span class="line"> </span><br><span class="line">  // 是否在构建生产包时生成 sourceMap 文件，false将提高构建速度  映射文件 打包时使用</span><br><span class="line">  productionSourceMap: false,</span><br><span class="line"> </span><br><span class="line">  // 调整内部的webpack配置.</span><br><span class="line">  // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md</span><br><span class="line">  chainWebpack: () =&gt; &#123; &#125;,</span><br><span class="line">  // chainWebpack: () =&gt; &#123;</span><br><span class="line">  //   // 删除懒加载模块的prefetch，降低带宽压力</span><br><span class="line">  //   // 而且预渲染时生成的prefetch标签是modern版本的，低版本浏览器是不需要的</span><br><span class="line">  //   //config.plugins.delete(&apos;prefetch&apos;);</span><br><span class="line">  //   //if(process.env.NODE_ENV === &apos;production&apos;) &#123;</span><br><span class="line">  //   // 为生产环境修改配置...process.env.NODE_ENV !== &apos;development&apos;</span><br><span class="line">  //   //&#125; else &#123;</span><br><span class="line">  //   // 为开发环境修改配置...</span><br><span class="line">  //   //&#125;</span><br><span class="line">  // &#125;,</span><br><span class="line">  configureWebpack: () =&gt; &#123; &#125;,</span><br><span class="line">  // configureWebpack: () =&gt; &#123;</span><br><span class="line">  // // 生产and测试环境</span><br><span class="line">  // let pluginsPro = [</span><br><span class="line">  //   new CompressionPlugin(&#123; //文件开启Gzip，也可以通过服务端(如：nginx)</span><br><span class="line">  //     filename: &apos;[path].gz[query]&apos;,</span><br><span class="line">  //     algorithm: &apos;gzip&apos;,</span><br><span class="line">  //     test: new RegExp(&apos;\\.(&apos; + [&apos;js&apos;, &apos;css&apos;].join(&apos;|&apos;) + &apos;)$&apos;),</span><br><span class="line">  //     threshold: 8192,</span><br><span class="line">  //     minRatio: 0.8,</span><br><span class="line">  //   &#125;),</span><br><span class="line">  //   new BundleAnalyzerPlugin(),</span><br><span class="line">  // ];</span><br><span class="line">  // //开发环境</span><br><span class="line">  // let pluginsDev = [</span><br><span class="line">  //   new vConsolePlugin(&#123;</span><br><span class="line">  //     filter: [], // 需要过滤的入口文件</span><br><span class="line">  //     enable: true // 发布代码前记得改回 false</span><br><span class="line">  //   &#125;),</span><br><span class="line">  // ];</span><br><span class="line">  // if (process.env.NODE_ENV === &apos;production&apos;) &#123; // 为生产环境修改配置...process.env.NODE_ENV !== &apos;development&apos;</span><br><span class="line">  //   config.plugins = [...config.plugins, ...pluginsPro];</span><br><span class="line">  // &#125; else &#123;</span><br><span class="line">  //   // 为开发环境修改配置...</span><br><span class="line">  //   config.plugins = [...config.plugins, ...pluginsDev];</span><br><span class="line">  // &#125;</span><br><span class="line">  // &#125;,</span><br><span class="line"> </span><br><span class="line">  // CSS 相关选项</span><br><span class="line">  css: &#123;</span><br><span class="line">    // 将组件内部的css提取到一个单独的css文件（只用在生产环境）</span><br><span class="line">    // 也可以是传递给 extract-text-webpack-plugin 的选项对象</span><br><span class="line">    // 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用&lt;style&gt;方式内联至html文件中</span><br><span class="line">    extract: true,</span><br><span class="line"> </span><br><span class="line">    // 是否在构建css样式映射，false将提高构建速度</span><br><span class="line">    sourceMap: false,</span><br><span class="line"> </span><br><span class="line">    // css预设器配置项</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      //   sass: &#123;</span><br><span class="line">      //     data: &apos;&apos;//`@import &quot;@/assets/scss/mixin.scss&quot;;`</span><br><span class="line">      //   &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"> </span><br><span class="line">    // 启用 CSS modules for all css / pre-processor files.</span><br><span class="line">    modules: false</span><br><span class="line">  &#125;,</span><br><span class="line"> </span><br><span class="line">  // 构建时开启多进程处理 babel 编译</span><br><span class="line">  //是否为 Babel 或 TypeScript 使用 thread-loader。</span><br><span class="line">  //该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建，在适当的时候开启几个子进程去并发的执行压缩</span><br><span class="line">  parallel: require(&quot;os&quot;).cpus().length &gt; 1,</span><br><span class="line"> </span><br><span class="line">  // PWA 插件相关配置</span><br><span class="line">  // 单页插件相关配置 https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa</span><br><span class="line">  pwa: &#123;&#125;,</span><br><span class="line"> </span><br><span class="line">  //vue3.0+</span><br><span class="line">  devServer: &#123;//跨域</span><br><span class="line">    open: process.platform === &quot;darwin&quot;,</span><br><span class="line">    //open: true, //配置自动启动浏览器</span><br><span class="line">    disableHostCheck: false,</span><br><span class="line">    host: &quot;0.0.0.0&quot;,</span><br><span class="line">    // host: &quot;0.0.0.0&quot; =&gt;</span><br><span class="line">    //   App running at:</span><br><span class="line">    // - Local:   http://localhost:8080/</span><br><span class="line">    // - Network: http://192.168.1.102:8080/</span><br><span class="line">    // host: &quot;127.0.0.1&quot;=&gt;</span><br><span class="line">    //   App running at:</span><br><span class="line">    // - Local:   http://127.0.0.1:8080/</span><br><span class="line">    // - Network: http://127.0.0.1:8080/</span><br><span class="line">    port: 8080,// 端口号</span><br><span class="line">    https: false,// true 配置之后可使用生成 https://localhost:8080/</span><br><span class="line">    hotOnly: false,// 热更新（webpack已实现了，这里false即可）</span><br><span class="line">    // proxy: null // 设置代理</span><br><span class="line">    proxy: &apos;http://localhost:8080&apos;   // 配置跨域处理,只设一个代理</span><br><span class="line">    //   proxy: &#123; //多个</span><br><span class="line">    //     // 配置跨域处理 可以设置多个</span><br><span class="line">    //     &apos;/api&apos;: &#123;</span><br><span class="line">    //       target: &apos;https://www.baidu.com/api&apos;,</span><br><span class="line">    //       ws: true,</span><br><span class="line">    //       changeOrigin: true</span><br><span class="line">    //     &#125;</span><br><span class="line">    //   &#125;</span><br><span class="line">    // before: app =&gt; &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line"> </span><br><span class="line">  // vue 2.0 设置跨域</span><br><span class="line">  // dev: &#123;</span><br><span class="line">  //   // proxyTable: &#123;</span><br><span class="line">  //   //     &apos;/api&apos;: &#123;</span><br><span class="line">  //   //         target: &apos;http://127.0.0.1:8080&apos;, // 目标地址</span><br><span class="line">  //   //         changeOrigin: true,</span><br><span class="line">  //   //         pathRewrite: &#123;</span><br><span class="line">  //   //             &apos;^/api&apos;: &apos;&apos; // 将目标地址变成这个</span><br><span class="line">  //   //         &#125;</span><br><span class="line">  //   //     &#125;</span><br><span class="line">  //   // &#125;,</span><br><span class="line">  // &#125;,</span><br><span class="line"> </span><br><span class="line">  // 是否启用dll webpack dll</span><br><span class="line">  // 关于dll只做简单解释 未附详细代码</span><br><span class="line">  // webpack.dll.conf.js</span><br><span class="line">  // 1、entry配置需要dll打包的库</span><br><span class="line">  // 2、module配置处理对应文件类型的loader</span><br><span class="line">  // 3、增加 webpack.DllPlugin插件</span><br><span class="line">  //    (1)、path:生成mainfest.json文件的绝对路径。mainfest.json里面的内容为所有被打包到dll.js文件模块id的映射。</span><br><span class="line">  //    (2)、name：webpack打包时mainfest.json包含的库的暴露出来的函数名名</span><br><span class="line">  //    (3)、contenxt(可选):引入manifest文件的context，默认为webpack的context</span><br><span class="line">  // dll: false,//配置好dll库，设置dll：true；可优化打包效率。减少打包时间，增加库缓存</span><br><span class="line"> </span><br><span class="line">  // 第三方插件配置</span><br><span class="line">  pluginOptions: &#123;&#125;,</span><br><span class="line">  // pluginOptions: &#123;</span><br><span class="line">  //   &apos;style-resources-loader&apos;: &#123;//https://github.com/yenshih/style-resources-loader</span><br><span class="line">  //     preProcessor: &apos;scss&apos;,//声明类型</span><br><span class="line">  //     &apos;patterns&apos;: [</span><br><span class="line">  //       //path.resolve(__dirname, &apos;./src/assets/scss/_common.scss&apos;),</span><br><span class="line">  //     ],</span><br><span class="line">  //     //injector: &apos;append&apos;</span><br><span class="line">  //   &#125;</span><br><span class="line">  // &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></span></h1><ul><li><a href="https://thelighter.github.io/2020/04/26/vue-7/">vue字符串截取字符串str切片处理办法</a></li><li><a href="https://thelighter.github.io/2020/04/26/vue-6/">node-sass安装失败解决办法</a></li><li><a href="https://thelighter.github.io/2020/04/25/vue-5/">vue项目一直运行 /sockjs-node/info?t= 解决办法</a></li><li><a href="https://thelighter.github.io/2020/04/14/vue-4/">MVVM的理解和Vue的生命周期</a></li><li><a href="https://thelighter.github.io/2020/04/13/vue-3/">vue的Mixed Content：The page at ‘https://XXX’ was loaded over HTTPS, but requested an insecure</a></li></ul></div>
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+    
+    <div>
+    
+      
+    </div>
+    
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="https://i.postimg.cc/NfTf3XL8/qrcode-for-gh-65701a2ee4d5-258.jpg" alt="小伟科技 wechat" style="width: 200px; max-width: 100%;">
+  <div>python爱好者公众号—每日学习python必备</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎打赏支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://xwtech.site/wp-content/uploads/2020/01/ce982e7d8fa326d.png" alt="小伟科技 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://xwtech.site/wp-content/uploads/2020/01/08a4f7debf5256c.png" alt="小伟科技 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小伟科技</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://thelighter.github.io/2020/04/29/vue-8/" title="vue配置文件config说明">https://thelighter.github.io/2020/04/29/vue-8/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/26/uniapp-2/" rel="next" title="uniapp的uni.request使用方法">
+                <i class="fa fa-chevron-left"></i> uniapp的uni.request使用方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/29/flask-5/" rel="prev" title="python flask 数据库乐观锁">
+                python flask 数据库乐观锁 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+  
+
+          </div>
+          
+
+  
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+
+      
+      
+      
+
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+   
+
+         
+      
+
+     
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">197</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+               
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+        
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">108</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          <div>
+          <div style="text-align:center;margin:auto;color:blue;margin-top:10px;">微信公众号</div>
+        
+          <div style="text-align:center;margin:auto;">每日学习python必备</div>
+          <img src="https://i.postimg.cc/NfTf3XL8/qrcode-for-gh-65701a2ee4d5-258.jpg">
+          
+          </div>
+
+          
+
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+         
+          
+          </div>
+       <!--近期文章版块 began-->
+  
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <i class="fa fa-history fa-" aria-hidden="true"></i>
+          近期文章
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/08/01/coding-6/" title="顶级黑客——天才少年被抓，将面临30项指控" target style="color:blue;">顶级黑客——天才少年被抓，将面临30项指控</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-5/" title="IEEE Spectrum 2020度程序语言排行榜" target style="color:blue;">IEEE Spectrum 2020度程序语言排行榜</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-2/" title="表哥的故事：利用互联网的信息不对称成就伟大的事业" target style="color:blue;">表哥的故事：利用互联网的信息不对称成就伟大的事业</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/mysql-2/" title="CentOS 8上安装MySQL 8.0" target style="color:blue;">CentOS 8上安装MySQL 8.0</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-1/" title="乱象之《平安经》节选" target style="color:blue;">乱象之《平安经》节选</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-4/" title="互联网前沿报导" target style="color:blue;">互联网前沿报导</a>
+            </li>
+          
+        </ul>
+      </div>
+  
+<!--近期文章版块 end-->
+         
+   
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xwtech.site/" title="https://xwtech.site/" rel="noopener" target="_blank">karl科技站</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+
+
+
+          
+            
+          
+           
+
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <!--近期文章版块 began-->
+  
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <i class="fa fa-history fa-" aria-hidden="true"></i>
+          近期文章
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/08/01/coding-6/" title="顶级黑客——天才少年被抓，将面临30项指控" target style="color:blue;">顶级黑客——天才少年被抓，将面临30项指控</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-5/" title="IEEE Spectrum 2020度程序语言排行榜" target style="color:blue;">IEEE Spectrum 2020度程序语言排行榜</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-2/" title="表哥的故事：利用互联网的信息不对称成就伟大的事业" target style="color:blue;">表哥的故事：利用互联网的信息不对称成就伟大的事业</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/mysql-2/" title="CentOS 8上安装MySQL 8.0" target style="color:blue;">CentOS 8上安装MySQL 8.0</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-1/" title="乱象之《平安经》节选" target style="color:blue;">乱象之《平安经》节选</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-4/" title="互联网前沿报导" target style="color:blue;">互联网前沿报导</a>
+            </li>
+          
+        </ul>
+      </div>
+  
+<!--近期文章版块 end--><br><br><br>
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">推荐文章</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+      
+      
+    </div>
+  </aside>
+  
+
+  
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaowei</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js"></script>
+
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+</body>
+</html>

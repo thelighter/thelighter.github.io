@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN,en">
+<head><meta name="generator" content="Hexo 3.8.0">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7384725227124412",
+          enable_page_level_ads: true
+     });
+</script>
+
+<script data-ad-client="ca-pub-7384725227124412" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137361931-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-137361931-1');
+</script>
+
+
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css">
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fav.png?v=7.0.0">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+
+  <meta name="description" content="flask面试题">
+<meta name="keywords" content="面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flask后端redis、MySQL等面试题">
+<meta property="og:url" content="https://thelighter.github.io/en/2020/02/15/flask-backend/index.html">
+<meta property="og:site_name" content="python爱好者">
+<meta property="og:description" content="flask面试题">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-07-27T12:53:11.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flask后端redis、MySQL等面试题">
+<meta name="twitter:description" content="flask面试题">
+
+
+
+
+
+
+  <link rel="canonical" href="https://thelighter.github.io/en/2020/02/15/flask-backend/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>flask后端redis、MySQL等面试题 | python爱好者</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<amp-auto-ads type="adsense" data-ad-client="ca-pub-7384725227124412">
+</amp-auto-ads>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">python爱好者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">专注于python 全栈开发<br></h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-coding">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/coding/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>程序员指南</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-resume">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/resume" rel="section"><i class="menu-item-icon fa fa-fw fa-star"></i> <br>resume</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-github">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="https://github.com/thelighter" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-github"></i> <br>github</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+   
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://thelighter.github.io/en/2020/02/15/flask-backend/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小伟科技">
+      <meta itemprop="description" content="一个专注于python编程，网站开发，app开发的网站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="python爱好者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">flask后端redis、MySQL等面试题
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+        
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-02-15 22:40:11" itemprop="dateCreated datePublished" datetime="2020-02-15T22:40:11+08:00">2020-02-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-07-27 20:53:11" itemprop="dateModified" datetime="2020-07-27T20:53:11+08:00">2020-07-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/flask/" itemprop="url" rel="index"><span itemprop="name">flask</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>flask面试题<br><a id="more"></a><br>一、你的项目中缓存粒度是如何选择的?</p>
+<p>缓存粒度一共分为4种.<br>1.缓存某个数值:一个键只保存一个值,性价比较低,使用率低,如果存储的话我们使用redis的String<br>2.缓存数据对象:数据库记录对应的具体数据,优点是可以多次复用,String,hash<br>3.缓存数据集合:数据库查询对应的结果集,可以和数据对象配合使用,方便数据对象的重用,hash,list,set,zset,String(zset,String)<br>4.缓存试图响应:试图返回的相应数据,复用性比较差,String<br>所以我们项目中主要对数据集合+数据对象进行缓存,他们的优点是复用性强,节省内存空间.</p>
+<p>二、使用过redis的那些格式做过缓存,其他应用场景和优缺点是什么?</p>
+<p>包括list,zset,set,hash和json字符串<br>其中我们使用过json字符串和zset<br>set用来存放无序去重的数据, 如果有判断是否存在的需求<br>zset有排序的需要list,如果说是按时间查询, 查询的结果固定, 不需要分页的情况下,我们使用list因为查询的比较快<br>但如果有额外排序要求, 而且需要分页, 我们使用zset(查询时间跟查询的长度和数据量有关,跟查询区别无关, 查询速度比较均衡),<br>增加数据效率和存储的数据量负相关,数据量越大,添加时间越长,查询数据效率和存储的数据量负相关,并且和查询的结果集数据量有关<br>json字符串需要进行转换,使用pickle模块提高性能,无法单独更新某个字段,节省空间</p>
+<p>三、生产环境下缓存数据redis满了怎么办,如何在不停止服务器的前提下扩容?</p>
+<p>我们通过Redis的Cluster集群来实现扩展存储空间,在不停掉Cluster集群环境的情况下通过redis-trib.rb脚本文件来动态的往集群环境中增加主,从节点,也可以动态的从集群环境中删除节点<br>配置连接<a href="https://www.cnblogs.com/PatrickLiu/p/8473135.html" target="_blank" rel="noopener">https://www.cnblogs.com/PatrickLiu/p/8473135.html</a></p>
+<ol>
+<li>创建两个redis实例, 修改配置文件ip和端口号</li>
+<li>把创建的两个实例添加到cluster集群中# ruby redis-trib.rb add-node 192.168.127.130:7006 192.168.127.130:7000</li>
+<li>cluster nodes 进行验证节点 , (默认都是主master)</li>
+<li>从主节点master上抽取一些slots分给要加入的这个主节点 # ruby redis-trib.rb reshard 192.168.127.130:7000</li>
+<li>选择接收数据槽的节点和数据槽产生的方式 选择all</li>
+<li>执行分配计划 yes_</li>
+<li>增加这从节点7007到集群中 # ruby redis-trib.rb add-node 192.168.127.130:7007 192.168.127.130:7000</li>
+<li>将从7007节点作为主节点的从节点实现主从配置 进入 7007redis<br>执行&gt; cluster replicate 71ecd970838e9b400a2a6a15cd30a94ab96203bf(这里是主节点的ID)<br>首先把redis的 maxmemory 调到最大, 然后把这个maxmemory-policy调成LFU淘汰策略<br>使用过期策略和缓存淘汰机制<br>过期策略中选择惰性过期+定期过期(每100ms对设置了过期时间的数据随机查询并删除过期数据)<br>缓存淘汰中有LFU和LRU.LFU:优先淘汰不是频繁使用的数据,有定期衰减这个机制,由于消费较高,<br>所以我们基本会选择LRU:优先淘汰不是最近使用的数据.淘汰策略maxmemory-policy volatile-lru</li>
+</ol>
+<p>四、缓存穿透和缓存雪崩是什么,如何解决?</p>
+<p>缓存穿透，是指查询一个数据库一定不存在的数据。正常的使用缓存流程大致是，数据查询先进行缓存查询，<br>如果key不存在或者key已经过期，再对数据库进行查询，并把查询到的对象，放进缓存。如果数据库查询对象为空，则不放进缓存.<br>解决办法:1.对于数据库中不存在的数据,也对其在缓存中设置默认值一般过期时间会比较短<br>2.可以设置一些过滤规则, 如布隆过滤器(算法, 用于判断数据是否包含在集合中), 将所有可能的值录入过滤器, 如果不包含直接返回None, 有误杀概率<br>​<br>缓存雪崩，是指在某一个时间段，缓存集中过期失效。<br>1.设置过期时间时,添加随机值,让过期时间进行一定程度分散<br>2.多级缓存的方式来处理<br>3.利用锁/队列的形式</p>
+<p>五、项目中使用的缓存模式是什么,遇到过哪些问题?</p>
+<p>1.Cache Aside 更新模式(同时更新缓存和数据库) 更新丢失(先更新数据库,后删除缓存), 缓存穿透, 缓存雪崩<br>2.Read/Write Through 更新模式(通读通写) 应用程序只需要维护缓存，数据库的维护工作由缓存代理<br>read through : 在查询操作中更新缓存，也就是说，当缓存失效的时候，Cache Aside 模式是由调用方负责把数据加载入缓存，而 Read Through 则用缓存服务自己来加载。<br>write through: 和 Read Through 相仿，不过是在更新数据时发生。当有数据更新的时候，如果没有命中缓存，直接更新数据库，然后返回。<br>如果命中了缓存，则更新缓存，然后由缓存自己更新数据库（这是一个同步操作）<br>3.Write Behind Caching 更新模式 就是在更新数据的时候，只更新缓存，不更新数据库，而我们的缓存会异步地批量更新数据库,这个设计的好处就是直接操作内存速度快。<br>因为异步，Write Behind Caching 更新模式还可以合并对同一个数据的多次操作到数据库，所以性能的提高是相当可观的。<br>但其带来的问题是，数据不是强一致性的，而且可能会丢失。另外，Write Behind Caching 更新模式实现逻辑比较复杂，因为它需要确认有哪些数据是被更新了的，哪些数据需要刷到持久层上。<br>只有在缓存需要失效的时候，才会把它真正持久起来。</p>
+<p>六、读写分离对事务是否有影响？</p>
+<p>对于写操作包括开启事务和提交或回滚要在一台机器上执行，分散到多台master执行后数据库原生的单机事务就失效了。<br>对于事务中同时包含读写操作，与事务隔离级别设置有关，如果事务隔离级别为read-uncommitted 或者 read-committed，读写分离没影响，<br>如果隔离级别为repeatable-read、serializable，读写分离就有影响，因为在slave上会看到新数据，而正在事务中的master看不到新数据。</p>
+<p>七、varchar和char的区别,utf8字符集下varchar最多能存多少个字符 ?</p>
+<p>char的长度不可变,查询效率高,可能造成存储浪费,用于手机号.varchar长度可变,,查询效率低,节省空间,用于用户名.在UTF8字符集下最大长度不能超过21845</p>
+<p>八、primary key和unique的区别？</p>
+<p>unique可空,可以在一个表里的一个或多个字段定义;<br>primary key不可空不可重复,在一个表里可以定义联合主键.</p>
+<p>九、什么是外键约束?</p>
+<p>不使用SQL建立外键, 而是定义普通的键去记录主键(逻辑外键) 仍然可以多表联查,删除和更新效率高,但是会有出错的风险,有程序逻辑来控制.</p>
+<p>十、什么是索引?</p>
+<p>为了提高查询速度提供的一种数据结构, 类似书的目录, 方便快速查询出数据, 而不是从头到尾的依次对比,优点:增加查询速度,缺点:增加数据库的存储空间,减慢增删改速度</p>
+<p>十一、索引的分类?</p>
+<p>普通索引index:不要用可空列作为索引, 易出错.<br>适合数据量超过300的表,经常与其他表进行连接的表，经常出现在Where子句中的字段，选择性高的字段和小字段.频繁进行数据操作的表，不要建立太多的索引；适用于改动小,查询多的场景.<br>联合索引:联合索引必须符合最左原则, 否则无效.<br>主键索引:创建主键后自动生成<br>唯一索引:设置唯一约束后自动生成<br>外键索引:设置外键约束后自动生成</p>
+<p>十二、索引的原理</p>
+<p>Mysql的索引存储结构为B+tree结构 平衡二叉树.<br>聚簇索引: 主键B+树在叶子节点直接存储的是数据行, InnoDB引擎使用.<br>优点: 主键查询的速度非常快<br>缺点: 增删改比较慢,其它的主键查询要二次查询<br>非聚簇索引: 主键B+树在叶子节点只是存储真正数据行的地址, 数据行和索引存储在不同的结构中,MyISAM引擎使用<br>优点: 增删改比较快, 非主键的查询也比较快<br>缺点: 不支持事务</p>
+<p>十三、InnoDB的主键为什么选择自增 ?</p>
+<p>数据和主键索引是绑定在一起的, 主键自增就会让数据顺序添加到B+Tree中, 写完一页再写下一页, 不需要为了索引的排列而移动数据和页分裂, 并且移动和页分裂也会降低查询速度 </p>
+<p>十四、能不能使用业务字段作为主键(业务主键) ?</p>
+<p>可以, 但不好<br>使用自增主键性能会快很多<br>业务字段更新频繁,一旦修改,索引也要跟着变,成本较高<br>所以一般采用和业务无关的数据充当主键(逻辑主键)</p>
+<p>十五、联合主键</p>
+<p>将多个业务键联合定义为主键<br>优点:节省空间<br>缺点:和业务有关, 频繁改动,不是自增,性能差,尽量不要用</p>
+<p>十六、三范式和反范式设计</p>
+<p>第一范式: 字段具有原子性, 不可拆分<br>第二范式: 依赖于全部主键, 而非部分主键<br>第三范式: 只依赖于主键, 非主键字段互不依赖<br>目的是减少冗余字段<br>如果单独定义字段来记录,该字段就称为冗余字段,这种设计称为反范式设计.<br>通过加入冗余字段,来提高数据库的查询速度,减少关联查询,用空间换取时间<br>范式是武功招式, 如何运用全看自己, 也有缺点, 查询速度高了,会增加很多写入操作</p>
+<p>十七、分库分表前后的问题?</p>
+<p>分表分库前的问题,<br>用户请求量太大,解决办法:分散请求到多个服务器上<br>单库太大,解决方法:切分成更多更小的库<br>单表太大,解决方法:切分成多个数据集更小的表<br>分表分库后的问题,<br>事务支持,分表分库后,就成了分布式事务<br>多库结果集合并<br>跨库join</p>
+<p>十八、mysql锁</p>
+<p>它的目的是解决并发情况下资源抢夺问题, 维护数据的一致性,<br>mysql的锁虽然开发者可以手动设置, 但比较影响并发性, 一般会使用乐观锁代替,由于mysql会自动使用锁, 所以需要了解锁机制, 以便优化数据库并发能力.<br>分为行级锁和表级锁.<br>行级锁:对数据行锁定, 并发好, 资源消耗多<br>表级锁:对整个表锁定, 并发差, 资源消耗少</p>
+<p>十九、锁和事务,锁和事务的优化建议</p>
+<p>无论操作是否在事务中, 都可以获取锁, 只不过在事务中, 获取的锁只有执行完事务才会释放<br>优化建议:<br>1.使用读取已提交事务隔离级别<br>2.精心设计索引<br>3.选择合理的事务大小<br>4.最好一次性请求足够级别的锁<br>5.约定以相同的顺序访问各表<br>6.用相等条件访问数据<br>7.除非必须，查询时不要显式加锁</p>
+<p>二十、行锁与读写权限</p>
+<p>行共享锁:获取行共享锁后, 当前事务可以读,不一定能写;其他事务可以读,不能写.<br>共享锁容易出现死锁陷阱<br>行排他锁:获取后,当前事务既可以读,也可以写;其他事务可以读,不能写<br>行锁是通过给索引加锁实现的,如果查询时没有触发索引,就会锁表,使用读取已提交事务隔离级别,只锁行,不锁表</p>
+<p>二十一、什么是间隙锁</p>
+<p>对于键值在条件范围内但并不存在的记录，叫做’间隙’<br>在击中索引的情况下,获取行锁时,InnoDB不仅会对符合条件的已有数据行加锁,也会对这个’间隙’加锁<br>InnoDB完整的行锁机制为  下键锁<br>缺点是会阻塞符合条件的插入操作,目的是防止幻读.<br>解决办法:1.尽量不要对有频繁插入的表进行范围条件的检索<br>2.使用读取已提交事务隔离级别<br>3.使用唯一索引或主键索引进行查询 </p>
+<p>二十二、mysql事务和事务隔离级别</p>
+<p>目的: 保证数据库安全稳定运行的技术<br>四大特性: ACID 原子性 一致性 隔离性 持久性<br>原子性: 要么都成功, 要么都失败,实现机制是undo log<br>一致性:操作前后, 系统稳定, 数据一致,原子性不代表一致性:<br>脏读/不可重复读/幻读: 解决办法:调整事务级别<br>提交事务后, 只有一半操作持久化成功: 解决办法: redo log<br>隔离性:每个事务是独立的,相互不会影响,实现机制多版本并发控制+锁(MVCC+锁)<br>持久性:保证事务的执行结果一定能在数据库中同步完成, 无论数据库所在硬件是否瘫痪,实现机制: redo log<br>原子性 持久性 隔离性 实现了一致性<br>事务隔离级别:四个级别, 只会用到读已提交和可重复读这两个<br>mysql默认为可重复读,更建议使用读取已提交,不会加间隙锁,索引没触发,不会锁表,只是锁行,不可重复读和幻读问题, 一般不需要管, 如果有强制要求, 加悲观锁/乐观锁</p>
+<p>二十三、MVCC多版本并发控制</p>
+<p>简单来说就是对数据做了多版本控制,事务隔离级别中的RC和RR就是MVCC实现的<br>RR可重复读级别:<br>快照读: select <em> from xx: # 在事务中无论读多少次都和第一次读的结果一样<br>当前读: select </em> from xx lock in share mode; select * from xx for update和insert update delete 语句<br>RC读取已提交级别:<br>仍然有快照读, 事务提交成功的数据可以读取得到, 但读不到未提交的数据</p>
+<p>二十四、MyISAM 和InnoDB</p>
+<p>MyISAM:只支持表级锁<br>表读锁/共享锁:获取后, 其他请求可以读不能写,对MyISAM的读操作，不会阻塞其他用户对同一表读请求，但会阻塞对同一表的写请求；<br>表写锁/排它锁:获取后, 其他请求既不能读也不能写,对MyISAM的写操作，则会阻塞其他用户对同一表的读和写操作；<br>加锁方式:1.数据库自动管理,查询前给设计的表添加读锁, 更新前(增删改)给涉及的表加写锁<br>2.MyISAM在执行查询语句前，会自动给涉及的所有表加共享锁，一旦上共享锁,其他进程就不能获取排它锁, 就不能进行写操作, 在执行更新、删除、增加操作前，会自动给涉及的表加写锁，这个过程并不需要用户干预<br>3.MyISAM表的读操作和写操作之间，以及写操作之间是串行的。<br>4.当一个线程获得对一个表的写锁后，只有持有锁线程可以对表进行更新操作。其他线程的读、写操作都会等待，直到锁被释放为止。<br>InnoDB:支持行级锁和表级锁, 优先使用行级锁<br>行共享锁:获取后, 其他事务也可以获取目标集的共享锁, 但不能获取目标集的排他锁<br>行排它锁:获取后, 其他事务既不能获取目标集的共享锁, 也不能获取对应的排它锁<br>加锁方式:1.对于查询语句，innodb不会加任何锁，也就是可以多个并发去进行查询的操作，不会有任何的锁冲突，因为根本没有锁。<br>2.对于增加、删除、更新操作，innodb会自动给涉及到的数据加排他锁，只有查询操作需要我们手动设置排他锁。<br>3.执行增删改前自动加排它锁<br>4.查询语句不需要任何锁, innoDB也不添加任何锁<br>5.增删改必须获取排它锁, 普通查询不需要获取任何锁</p>
+<p>二十五、REDO和UNDO</p>
+<p>UNDO:作用:1.用于回滚,现实事务的原子性<br>2.实现多版本并发控制(MVCC)<br>原理:在数据操作只从之前,先将牵扯到的数据备份到UNDO LOG, 然后再进行数据的操作<br>如果出现回滚操作,系统可以利用Undo Log中的备份将数据恢复到事务开始之前的状态<br>Undo log必须先于数据持久化到磁盘,如果在D,E之间系统崩溃, undo log是完整的,可以用来回滚事务<br>​<br>REDO:记录的是新数据的备份<br>作用:保证事务持久性<br>原理:1 新数据写入内存缓冲区后,将执行的更新操作写入redo log,再将数据写入磁盘(一定发生在redo写入之后,但未必立即执行)<br>2.当系统崩溃时,虽然数据没有写入磁盘,但是Redo Log已经持久化,系统可以根据Redo log的内容,将所有数据恢复到最新的状态<br>3.虽然redo log和写入数据库 都是写入磁盘,但是redo log的性能高于写入数据库(redo log只写入命令,不添加事务的判断)<br>​<br>数据库恢复:1.mysql重启后自动进行 2.先REDO,再UNDO 3.进行恢复时,<br>3.1 REDO不区分事务,会重复做所有操作(包括未提交的操作和最终回滚的操作)<br>3.2 然后再由UNDO来回滚未提交和要执行回滚的事务</p>
+<p>二十六、数据库引擎</p>
+<p>实现数据存储的不同解决方案<br>InnoDB mysql5.5开始 默认<br>支持事务,支持行级锁和表级锁,并发访问时效率高,支持外键约束,插入/更新/主键查询快,需要内存和硬盘多,常规推荐使用<br>MyISAM:不支持事务,不支持外键约束,只支持表级锁,批量插入/查询/count速度快<br>简单, 适合小型项目和以批量插入和查询为主的系统(内部管理系统)</p>
+<p>二十七、什么是RPC,gRPC?</p>
+<p>RPC (远程过程调同) 是一个计算机通信协议<br>作用: 可以以函数形式来调用另一台计算机上的程序<br>优点: 使用自定义的二进制形式进行数据传输, 效率极高<br>应用场景:子系统之间进行数据交互</p>
+<p>grpc:谷歌开发的高性能的RPC框架<br>优点:1.使用http2.0标准, 支持双向流和多路复用 2.支持多语言和多平台</p>
+<p>http2.0利用二进制的分帧层对请求头,请求体进行分组分包, 这样就允许在同一个连接可以发送和接收多个请求的数据<br>主要特点:二进制分帧层,多路复用,头部压缩,服务器推送</p>
+<p>二十八、APSchedule定时器</p>
+<p>分为crontab和apschedule<br>crontab:是linux系统一个内置命令,依赖于linux系统,无动态管理任务,适合于普通的静态任务.<br>apschedule:独里的定时器程序,可以方便的管理定时任务,需要动态生成.<br>支持三种触发器<br>date 只执行一次<br>interval 周期执行 参数时间间隔<br>cron 周期执行 参数时间</p>
+<p>二十九、缓存更新问题</p>
+<p>mysql和redis是两个独立的系统,在并发环境下,无法保证更新的一致性,解决办法:更新数据时,先写入mysql,再删除缓存,设计分布式锁或使消息队列串行处理</p>
+<p>三十、缓存有效期和淘汰策略</p>
+<p>设置有效期的作用:1.节省空间 2.做到数据弱一致性，有效期失效后，可以保证数据的一致性<br>过期策略:1.定时过期:效率太低,每个数据都需要设置定时器进行计数<br>2.惰性过期:查询时,才去检查数据的有效期,如果过期,则返回nil,并删除过期数据<br>3.定期过期:每隔100ms,随机取出一部分数据进行过期校验,如果过期, 删除数据<br>redis中选择惰性过期+定期过期 (每100ms对设置了过期时间的数据随机查询并删除过期数据)<br>LRU:least recently use 优先淘汰不是最近使用的数据<br>LFU:least frequently use 优先淘汰不是频繁使用的数据<br>采用了定期衰减的机制, 防止旧数据始终无法删除<br>缺点:需要每条数据维护一个使用计数,还需要定期衰减</p>
+<p>三十一、为什么不用定时过期策略?</p>
+<p>定时过期,用一个定时器来负责监视key,过期则自动删除。虽然内存及时释放，但是十分消耗CPU资源。在大并发请求下，CPU要将时间应用在处理请求，而不是删除key,因此没有采用这一策略.</p>
+<p>三十二、定期过期+惰性过期是如何工作的呢?</p>
+<p>定期过期，redis默认每个100ms检查，是否有过期的key,有过期key则删除。需要说明的是，redis不是每个100ms将所有的key检查一次，<br>而是随机抽取进行检查(如果每隔100ms,全部key进行检查，redis岂不是卡死)。因此，如果只采用定期过去策略，会导致很多key到时间没有删除。<br>于是，惰性过期派上用场。也就是说在你获取某个key的时候，redis会检查一下，这个key如果设置了过期时间那么是否过期了？如果过期了此时就会删除。</p>
+<p>三十三、采用定期过期+惰性过期就没其他问题了么?</p>
+<p>不是的，如果定期过期没删除key。然后你也没即时去请求key，也就是说惰性过期也没生效。这样，redis的内存会越来越高。那么就应该采用内存淘汰机制。</p>
+<p>三十四、JWE</p>
+<p>对称加密:<br>代表算法 des 3des aes,速度快<br>非对称加密:<br>代表算范 rsa<br>速度慢,不适合大型数据加密<br>加密时,一般公钥加密,私钥解密,与签名相反<br>私钥唯一,使用私钥签名,公钥验签,可以保证签名者身份唯一<br>主要用于数据加密<br>最佳方案 (JWE)<br>传输的数据使用对称加密, 生成数据密文, 对称加密秘钥是随机的,为了防止数据篡改,对数据密文进行摘要认证,摘要认证的秘钥也是随机的,对称加密的秘钥和摘要认证的秘钥使用非对称加密进行处理<br>JWE的耗时远高于JWS</p>
+<p>三十五、为什么使用JWT进行状态保持?</p>
+<p>因为APP不支持状态保持,状态保持有同源策略,无法跨服务器传递,所以不采用session.session依赖于cookie不安全,session存在于数据库,用户多时,影响数据库性能</p>
+<p>三十六、什么是JWT?</p>
+<p>JWT不可逆加密部分主要用于数据认证, 防止数据被修改</p>
+<p>三十七、CDN加速是对网站所在服务器加速，还是对其域名加速？</p>
+<p>CDN是只对网站的某一个具体的域名加速。如果同一个网站有多个域名，则访客访问加入CDN的域名获得加速效果，访问未加入CDN的域名，或者直接访问IP地址，则无法获得CDN效果。<br>三十八、CDN使用后，原来的网站是否需要做修改，做什么修改？</p>
+<p>一般而言，网站无需任何修改即可使用CDN获得加速效果。只是对需要判断访客IP程序，才需要做少量修改。</p>
+<p>三十九、如何解决刷新问题？</p>
+<p>1.手机号+验证码（或帐号+密码）验证后颁发接口调用token与refresh_token（刷新token）<br>2.Token 有效期为2小时，在调用接口时携带，每2小时刷新一次<br>3.提供refresh_token，refresh_token 有效期14天<br>4.在接口调用token过期后凭借refresh_token 获取新token<br>5.未携带token 、错误的token或接口调用token过期，返回401状态码<br>6.refresh_token 过期返回403状态码，前端在使用refresh_token请求新token时遇到403状态码则进入用户登录界面从新认证。</p>
+<p>四十、判断问题发生在前端还是后端?</p>
+<p>如果前端为网页，可以通过网页调试工具里面的network判断<br>如果前端不是网页，比如app，通过日志的访问请求记录判断<br>如果是后端出现的问题，通过pycharm或日志来判断</p>
+<p>四十一、数据库优化</p>
+<p>1.在进行表设计时，可适度增加冗余字段(反范式设计)，减少JOIN操作；<br>2.多字段表可以进行垂直分表优化，多数据表可以进行水平分表优化；<br>3.选择恰当的数据类型，如整型的选择；<br>4.对于强调快速读取的操作，可以考虑使用MyISAM数据库引擎；<br>5.对较频繁的作为查询条件的字段创建索引；唯一性太差的字段不适合单独创建索引，即使频繁作为查询条件；更新非常频繁的字段不适合创建索引；<br>6.编写SQL时使用上面的方式对SQL语句进行优化；<br>7.使用慢查询工具找出效率低下的SQL语句进行优化；<br>8.构建缓存，减少数据库磁盘操作；<br>9.可以考虑结合使用内在型数据库，如Redis，进行混合存储。</p>
+<p>四十二、Redis事务</p>
+<p>语法:<br>1.MULTI:开启事务, 后续的命令会被加入到同一个事务中<br>事务中的操作会发给服务端, 但是不会立即执行, 而是放到了该事务的对应的一个队列中, 服务端返回QUEUED<br>2.EXEC:执行EXEC后, 事务中的命令才会被执行,事务中的命令出现错误时, 不会回滚也不会停止事务, 而是继续执行<br>3.DISCARD:取消事务, 事务队列会清空, 客户端退出事务状态<br>ACID:<br>1.原子性: 不支持, 不会回滚并且有错误也会继续执行<br>2.隔离性: 支持, 单进程,单线程, 事务中的命令顺序执行, 并且不会被其他客户端(事务)打断(先EXEC的先执行)在事务中的会一次性执行完再执行下一个命令(事务)<br>3.持久性:不支持, redis数据丢失<br>4.一致性: 不支持, 如果强制使用一致性,需要加乐观锁(watch监听)<br>watch:redis实现的乐观锁 可以实现秒杀超卖需求<br>事务开启前, 设置对数据的监听, EXEC时, 如果发现数据发生过修改, 事务会自动取消<br>事务EXEC后, 无论成败, 监听会被移除<br>setnx和悲观锁:setnx键不存在,才会设置成功</p>
+<p>四十三、Redis持久化</p>
+<p>分为RDB快照存储和AOF只追加文件<br>RDB:将内存中的所有数据 完整的保存到硬盘中,配置中设置自动持久化策略<br>优点:方便数据备份:由于保存到单独的文件中,易于数据备份<br>写时复制:子进程单独完成持久化操作,父进程不参与IO操作, 最大化redis性能<br>恢复大量数据时,速度优于AOF<br>缺点:不是实时保存数据,如果redis意外停止工作,则可能会丢失一段时间的数据<br>数据量大时,fork进程会比较慢,持久化时使redis响应速度变慢<br>AOF:只追加而不是全部重新写入,追加命令而不是数据<br>优点:更可靠 默认每秒同步一次操作,最多丢失一秒数据<br>可以进行文件重写,以避免AOF文件过大<br>缺点:相同数据集,AOF文件比RDB体积大,恢复速度慢<br>除非是不同步情况,否则普遍要比RDB速度慢</p>
+<p>四十四、如何选择RDB和AOF?</p>
+<p>对于更新频繁,一致性要求不是非常高的数据可以选择使用redis进行持久化存储<br>RDB or AOF:<br>数据安全性要求高, 都打开<br>可以接受短时间的数据丢失, 只使用RDB<br>即使使用AOF,最好也开启RDB,因为便于备份并且回复速度快,bug更少<br>使用redis进行一部分数据的持久化存储<br>两种持久化机制都开启</p>
+<p>四十五、什么是哨兵机制?</p>
+<p>监控redis服务器的运行状态,可以进行自动故障转移,实现高可用,与数据库主从配合使用的机制<br>特点:<br>1.独自的进程, 每台redis服务器应该至少配置一个哨兵程序<br>2.监控redis主服务器的运行状态<br>3.出现故障后可以向管理员/其他程序发出通知<br>4.针对故障,可以进行自动转移, 并向客户端提供新的访问地址<br>至少在3台服务器上分别启动至少一个哨兵<br>如果只有一台,则服务器宕机后,将无法进行故障迁移<br>如果只有两台,一旦一个哨兵挂掉了,则投票会失败<br>心跳机制和投票裁决</p>
+<p>四十六、什么是集群?</p>
+<p>多个节点共同保存数据,它能扩展存储空间,提高吞吐量,提高写的性能,不在区分数据库,只有0号库,单机默认0-15,不支持事务,管道和多值操作.<br>要求至少三主三从,要求必须开启AOF持久化,自动选择集群节点进行存储,默认集成哨兵,自动故障转移<br>redis集群不能支持事务和WATCH, 并发控制只能自己设计悲观锁,集群负责实现缓存设计</p>
+<p>四十六、数据库设计?</p>
+<p>索引的原理采用了B+Tree平衡二叉树结构,有聚簇索引和非聚簇索引,<br>聚簇索引:主键B+树在叶子节点直接存储的是数据行, InnoDB引擎使用.优点: 主键查询的速度非常快,缺点: 增删改比较慢,其它的主键查询要二次查询<br>非聚簇索引:主键B+树在叶子节点只是存储真正数据行的地址, 数据行和索引存储在不同的结构中,MyISAM引擎使用优点: 增删改比较快, 非主键的查询也比较快<br>缺点: 不支持事务<br>所以我们大多数的表都使用了聚簇索引和InnoDB引擎,因为InnoDB引擎支持事务,可以进行事务回滚,恢复速度快,还支持行级锁和表级锁,<br>提高并发访问时的效率,支持外键约束,插入更新主键查询快,但是需要的内存和硬盘多,<br>而MyISAM引擎不支持事务和外键约束,只支持表级锁,批量插入和查询速度快,适合小型项目,我们项目中系统公告表因为基本不会修改,<br>不存在大量并发写操作,也就不需要行级锁和事务为数据安全稳定做保障,查询多,MyISAM的查询速度会更快.<br>当初我们尝试使用业务字段作为主键,结果是可以使用,但是不太好,业务字段更新频繁,一旦修改,索引也要跟着变,成本比较高,</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+    
+    <div>
+    
+      
+    </div>
+    
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="https://i.postimg.cc/NfTf3XL8/qrcode-for-gh-65701a2ee4d5-258.jpg" alt="小伟科技 wechat" style="width: 200px; max-width: 100%;">
+  <div>python爱好者公众号—每日学习python必备</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎打赏支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://xwtech.site/wp-content/uploads/2020/01/ce982e7d8fa326d.png" alt="小伟科技 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://xwtech.site/wp-content/uploads/2020/01/08a4f7debf5256c.png" alt="小伟科技 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>小伟科技</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://thelighter.github.io/2020/02/15/flask-backend/" title="flask后端redis、MySQL等面试题">https://thelighter.github.io/2020/02/15/flask-backend/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/15/lock/" rel="next" title="悲观锁和乐观锁问题">
+                <i class="fa fa-chevron-left"></i> 悲观锁和乐观锁问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/18/cors/" rel="prev" title="跨域问题解决办法">
+                跨域问题解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+  
+
+          </div>
+          
+
+  
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+
+      
+
+     
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">197</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+               
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+        
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">108</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          <div>
+          <div style="text-align:center;margin:auto;color:blue;margin-top:10px;">微信公众号</div>
+        
+          <div style="text-align:center;margin:auto;">每日学习python必备</div>
+          <img src="https://i.postimg.cc/NfTf3XL8/qrcode-for-gh-65701a2ee4d5-258.jpg">
+          
+          </div>
+
+          
+
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+         
+          
+          </div>
+       <!--近期文章版块 began-->
+  
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <i class="fa fa-history fa-" aria-hidden="true"></i>
+          近期文章
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/08/01/coding-6/" title="顶级黑客——天才少年被抓，将面临30项指控" target style="color:blue;">顶级黑客——天才少年被抓，将面临30项指控</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-5/" title="IEEE Spectrum 2020度程序语言排行榜" target style="color:blue;">IEEE Spectrum 2020度程序语言排行榜</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-2/" title="表哥的故事：利用互联网的信息不对称成就伟大的事业" target style="color:blue;">表哥的故事：利用互联网的信息不对称成就伟大的事业</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/mysql-2/" title="CentOS 8上安装MySQL 8.0" target style="color:blue;">CentOS 8上安装MySQL 8.0</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-1/" title="乱象之《平安经》节选" target style="color:blue;">乱象之《平安经》节选</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-4/" title="互联网前沿报导" target style="color:blue;">互联网前沿报导</a>
+            </li>
+          
+        </ul>
+      </div>
+  
+<!--近期文章版块 end-->
+         
+   
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xwtech.site/" title="https://xwtech.site/" rel="noopener" target="_blank">karl科技站</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+
+
+
+          
+            
+          
+           
+
+
+          
+        </div>
+      </div>
+
+      
+
+      
+
+      
+      
+    </div>
+  </aside>
+  
+
+  
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaowei</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js"></script>
+
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+</body>
+</html>

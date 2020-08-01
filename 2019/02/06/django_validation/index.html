@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN,en">
+<head><meta name="generator" content="Hexo 3.8.0">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7384725227124412",
+          enable_page_level_ads: true
+     });
+</script>
+
+<script data-ad-client="ca-pub-7384725227124412" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137361931-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-137361931-1');
+</script>
+
+
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css">
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fav.png?v=7.0.0">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+
+  <meta name="description" content="ModelSerializer及Validation自定义验证逻辑">
+<meta name="keywords" content="python,AI,人工智能,爬虫,scrapy,django,flask,web,python-web,java,php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ModelSerializer及Validation自定义验证逻辑">
+<meta property="og:url" content="https://thelighter.github.io/2019/02/06/django_validation/index.html">
+<meta property="og:site_name" content="python爱好者">
+<meta property="og:description" content="ModelSerializer及Validation自定义验证逻辑">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-27T12:53:11.513Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ModelSerializer及Validation自定义验证逻辑">
+<meta name="twitter:description" content="ModelSerializer及Validation自定义验证逻辑">
+
+
+
+
+
+
+  <link rel="canonical" href="https://thelighter.github.io/2019/02/06/django_validation/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ModelSerializer及Validation自定义验证逻辑 | python爱好者</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<amp-auto-ads type="adsense" data-ad-client="ca-pub-7384725227124412">
+</amp-auto-ads>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">python爱好者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">专注于python 全栈开发<br></h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-coding">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/coding/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>程序员指南</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-resume">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/resume" rel="section"><i class="menu-item-icon fa fa-fw fa-star"></i> <br>resume</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-github">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="https://github.com/thelighter" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-github"></i> <br>github</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+   
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://thelighter.github.io/2019/02/06/django_validation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小伟科技">
+      <meta itemprop="description" content="一个专注于python编程，网站开发，app开发的网站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="python爱好者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">ModelSerializer及Validation自定义验证逻辑
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+        
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-06 10:11:55" itemprop="dateCreated datePublished" datetime="2019-02-06T10:11:55+08:00">2019-02-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-07-27 20:53:11" itemprop="dateModified" datetime="2020-07-27T20:53:11+08:00">2020-07-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/django/" itemprop="url" rel="index"><span itemprop="name">django</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            <div class="post-description">ModelSerializer及Validation自定义验证逻辑</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="field参数"><a href="#field参数" class="headerlink" title="field参数"></a>field参数</h1><ul>
+<li><p>read_only：True</p>
+<p>  表示不允许用户自己上传，只能用于api的输出。如果某个字段设置了read_only=True，那么就不需要进行数据验证，只会在返回时，将这个字段序列化后返回<br>    举个简单的例子：在用户进行购物的时候，用户post订单时，肯定会产生一个订单号，而这个订单号应该由后台逻辑完成，而不应该由     用户post过来，如果不设置read_only=True，那么验证的时候就会报错。</p>
+</li>
+<li><p>order_sn = serializers.CharField(readonly=True)</p>
+</li>
+<li><p>write_only: 与read_only对应</p>
+</li>
+<li><p>required: 顾名思义，就是这个字段是否必填。</p>
+</li>
+<li><p>allow_null/allow_blank：是否允许为NULL/空 。</p>
+</li>
+<li><p>error_messages：出错时，信息提示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = serializers.CharField(required=True, min_length=6,</span><br><span class="line">                error_messages=&#123;</span><br><span class="line">                    &apos;min_length&apos;: &apos;名字不能小于6个字符&apos;,</span><br><span class="line">                    &apos;required&apos;: &apos;请填写名字&apos;&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>label: 字段显示设置，如 label=’验证码’</p>
+</li>
+<li><p>help_text: 在指定字段增加一些提示文字，这两个字段作用于api页面比较有用</p>
+</li>
+<li><p>style: 说明字段的类型，这样看可能比较抽象，看下面例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 在api页面，输入密码就会以*显示</span><br><span class="line">password = serializers.CharField(</span><br><span class="line">    style=&#123;&apos;input_type&apos;: &apos;password&apos;&#125;)</span><br><span class="line"># 会显示选项框</span><br><span class="line">color_channel = serializers.ChoiceField(</span><br><span class="line">    choices=[&apos;red&apos;, &apos;green&apos;, &apos;blue&apos;],</span><br><span class="line">    style=&#123;&apos;base_template&apos;: &apos;radio.html&apos;&#125;)</span><br><span class="line">  这里面，还有一个十分有用的validators参数，这个我们会在后面提及！</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="HiddenField"><a href="#HiddenField" class="headerlink" title="HiddenField"></a>HiddenField</h1><p>HiddenField的值不依靠输入，而需要设置默认的值，不需要用户自己post数据过来，也不会显式返回给用户，最常用的就是user!!<br>  我们在登录情况下，进行一些操作，假设一个用户去收藏了某一门课，那么后台应该自动识别这个用户，然后用户只需要将课程的id post过来，那么这样的功能，我们配合CurrentUserDefault()实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这样就可以直接获取到当前用户</span><br><span class="line">user = serializers.HiddenField(</span><br><span class="line">    default=serializers.CurrentUserDefault())</span><br></pre></td></tr></table></figure></p>
+<h1 id="ModelSerializer需要解决的2个问题"><a href="#ModelSerializer需要解决的2个问题" class="headerlink" title="ModelSerializer需要解决的2个问题"></a>ModelSerializer需要解决的2个问题</h1><p>1，某个字段不属于指定model，它是write_only，需要用户传进来，但我们不能对它进行save( )，因为ModelSerializer是基于Model，这个字段在Model中没有对应，这个时候，我们需要重载validate！<br>如在用户注册时，我们需要填写验证码，这个验证码只需要验证，不需要保存到用户这个Model中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def validate(self, attrs):</span><br><span class="line">    del attrs[&quot;code&quot;]</span><br><span class="line">    return attrs123</span><br></pre></td></tr></table></figure></p>
+<p>2，某个字段不属于指定model，它是read_only，只需要将它序列化传递给用户，但是在这个model中，没有这个字段！我们需要用到SerializerMethodField。<br>　　假设需要返回用户加入这个网站多久了，不可能维持这样加入的天数这样一个数据，一般会记录用户加入的时间点，然后当用户获取这个数据，我们再计算返回给它。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class UserSerializer(serializers.ModelSerializer):  </span><br><span class="line">    days_since_joined = serializers.SerializerMethodField()</span><br><span class="line">    # 方法写法：get_ + 字段</span><br><span class="line">    def get_days_since_joined(self, obj):</span><br><span class="line">    # obj指这个model的对象</span><br><span class="line">        return (now() - obj.date_joined).days</span><br><span class="line"> </span><br><span class="line">    class Meta:</span><br><span class="line">        model = User123456789</span><br></pre></td></tr></table></figure></p>
+<h1 id="Validation自定义验证逻辑"><a href="#Validation自定义验证逻辑" class="headerlink" title="Validation自定义验证逻辑"></a>Validation自定义验证逻辑</h1><p>单独的validate<br>我们在上面提到field，它能起到一定的验证作用，但很明显，它存在很大的局限性，举个简单的例子，我们要判断我们手机号码，如果使用CharField(max_length=11, min_length=11），它只能确保我们输入的是11个字符，那么我们需要自定义！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mobile_phone = serializers.CharField(max_length=11, min_length=11）</span><br><span class="line"> </span><br><span class="line">def validate_mobile_phone(self, mobile_phone):</span><br><span class="line">    # 注意参数，self以及字段名</span><br><span class="line">    # 注意函数名写法，validate_ + 字段名字</span><br><span class="line">    if not re.match(REGEX_MOBILE, mobile):</span><br><span class="line">    # REGEX_MOBILE表示手机的正则表达式</span><br><span class="line">        raise serializers.ValidationError(&quot;手机号码非法&quot;)</span><br><span class="line">    return mobile_phone123456789</span><br></pre></td></tr></table></figure></p>
+<p>当然，这里面还可以加入很多逻辑，例如，还可以判断手机是否原本就存在数据库等等。</p>
+<h2 id="联合validate"><a href="#联合validate" class="headerlink" title="联合validate"></a>联合validate</h2><p>上面验证方式，只能验证一个字段，如果是两个字段联合在一起进行验证，那么我们就可以重载validate( )方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">start = serializers.DateTimeField()</span><br><span class="line">finish = serializers.DateTimeField()</span><br><span class="line"> </span><br><span class="line">def validate(self, attrs):</span><br><span class="line"># 传进来什么参数，就返回什么参数，一般情况下用attrs</span><br><span class="line">    if data[&apos;start&apos;] &gt; data[&apos;finish&apos;]:</span><br><span class="line">        raise serializers.ValidationError(&quot;finish must occur after start&quot;)</span><br><span class="line">    return attrs12345678</span><br></pre></td></tr></table></figure></p>
+<p>这个方法非常的有用，我们还可以再这里对一些read_only的字段进行操作，我们在read_only提及到一个例子，订单号的生成，我们可以在这步生成一个订单号，然后添加到attrs这个字典中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">order_sn = serializers.CharField(readonly=True)</span><br><span class="line">def validate(self, attrs):</span><br><span class="line">    # 调用一个方法生成order_sn</span><br><span class="line">    attrs[&apos;order_sn&apos;] = generate_order_sn()</span><br><span class="line">    return attrs12345</span><br></pre></td></tr></table></figure></p>
+<p>这个方法运用在modelserializer中，可以剔除掉write_only的字段，这个字段只验证，但不存在与指定的model当中，即不能save( )，可以在这delete掉！</p>
+<h2 id="Validators"><a href="#Validators" class="headerlink" title="Validators"></a>Validators</h2><p>validators可以直接作用于某个字段，这个时候，它与单独的validate作用差不多<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def multiple_of_ten(value):</span><br><span class="line">    if value % 10 != 0:</span><br><span class="line">        raise serializers.ValidationError(&apos;Not a multiple of ten&apos;)</span><br><span class="line"> </span><br><span class="line">class GameRecord(serializers.Serializer):</span><br><span class="line">    score = IntegerField(validators=[multiple_of_ten])123456</span><br></pre></td></tr></table></figure></p>
+<p>当然，drf提供的validators还有很好的功能：UniqueValidator，UniqueTogetherValidator等<br>　　UniqueValidator: 指定某一个对象是唯一的，如，用户名只能存在唯一：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">username = serializers.CharField(</span><br><span class="line">        max_length=11, </span><br><span class="line">        min_length=11,</span><br><span class="line">        validators=[UniqueValidator(queryset=UserProfile.objects.all())</span><br><span class="line">    ）12345</span><br></pre></td></tr></table></figure></p>
+<p>UniqueTogetherValidator: 联合唯一，如用户收藏某个课程，这个时候就不能单独作用于某个字段，我们在Meta中设置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Meta:</span><br><span class="line">    validators = [</span><br><span class="line">        UniqueTogetherValidator(</span><br><span class="line">            queryset=UserFav.objects.all(),</span><br><span class="line">            fields=(&apos;user&apos;, &apos;course&apos;),</span><br><span class="line">            message=&apos;已经收藏&apos;</span><br><span class="line">        )]</span><br></pre></td></tr></table></figure></p>
+<h2 id="关于外键的serializers"><a href="#关于外键的serializers" class="headerlink" title="关于外键的serializers"></a>关于外键的serializers</h2><p>其实，外键的field也比较简单，如果我们直接使用serializers.Serializer，那么直接用PrimaryKeyRelatedField就解决了。<br>  假设现在有一门课python入门教学(course)，它的类别是python(catogory)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 指定queryset</span><br><span class="line">category = serializers.PrimaryKeyRelatedField(queryset=CourseCategory.objects.all(), required=True)</span><br></pre></td></tr></table></figure></p>
+<p>ModelSerializer就更简单了，直接通过映射就好了<br>  不过这样只是用户获得的只是一个外键类别的id，并不能获取到详细的信息，如果想要获取到具体信息，那需要嵌套serializer</p>
+<p><code>category = CourseCategorySerializer()</code><br>注意：上面两种方式，外键都是正向取得，下面介绍怎么反向去取，如，我们需要获取python这个类别下，有什么课程。  首先，在课程course的model中，需要在外键中设置related_name<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class Course(model.Model):</span><br><span class="line">    category = models.ForeignKey(CourseCategory, related_name=&apos;courses&apos;)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 反向取课程，通过related_name</span><br><span class="line"># 一对多，一个类别下有多个课程，一定要设定many=True</span><br><span class="line">courses = CourseSerializer(many=True)</span><br></pre></td></tr></table></figure>
+<p>写到这里，外键就基本讲完了！还有一个小问题：我们在上面提到ModelSerializer需要解决的第二个问题中，其实还有一种情况，就是某个字段属于指定model，但不能获取到相关数据。<br>  假设现在是一个多级分类的课程，例如，编程语言–&gt;python–&gt;python入门学习课程，编程语言与python属于类别，另外一个属于课程，编程语言类别是python类别的一个外键，而且属于同一个model，实现方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parent_category = models.ForeignKey(&apos;self&apos;, null=True, blank=True, </span><br><span class="line">                    verbose_name=&apos;父类目别&apos;,</span><br><span class="line">                    related_name=&apos;sub_cat&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>现在获取编程语言下的课程，显然无法直接获取到python入门学习这个课程，因为它们两没有外键关系。SerializerMethodField( )也可以解决这个问题，只要在自定义的方法中实现相关的逻辑即可！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">courses = SerializerMethodField()</span><br><span class="line">def get_courses(self, obj):</span><br><span class="line">    all_courses = Course.objects.filter(category__parent_category_id=obj.id)</span><br><span class="line">    courses_serializer = CourseSerializer(all_course, many=True, </span><br><span class="line">                    context=&#123;&apos;request&apos;: self.context[&apos;request&apos;]&#125;)</span><br><span class="line">    return courses_serializer.data</span><br></pre></td></tr></table></figure></p>
+<p>上面的例子看起来有点奇怪，因为我们在SerializerMethodField()嵌套了serializer，就需要自己进行序列化，然后再从data就可以取出json数据。<br>  可以看到传递的参数是分别是：queryset，many=True多个对象，context上下文。这个context十分关键，如果不将request传递给它，在序列化的时候，图片与文件这些Field不会再前面加上域名，也就是说，只会有/media/img…这样的路径！</p>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+    
+    <div>
+    
+      
+    </div>
+    
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="https://i.postimg.cc/NfTf3XL8/qrcode-for-gh-65701a2ee4d5-258.jpg" alt="小伟科技 wechat" style="width: 200px; max-width: 100%;">
+  <div>python爱好者公众号—每日学习python必备</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎打赏支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://xwtech.site/wp-content/uploads/2020/01/ce982e7d8fa326d.png" alt="小伟科技 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://xwtech.site/wp-content/uploads/2020/01/08a4f7debf5256c.png" alt="小伟科技 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小伟科技</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://thelighter.github.io/2019/02/06/django_validation/" title="ModelSerializer及Validation自定义验证逻辑">https://thelighter.github.io/2019/02/06/django_validation/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/06/django_superuser/" rel="next" title="Django 使用createsuperuser创建超级用户后不能登录后台的解决方案">
+                <i class="fa fa-chevron-left"></i> Django 使用createsuperuser创建超级用户后不能登录后台的解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/17/saas/" rel="prev" title="saas是什么，如何理解saas概念？">
+                saas是什么，如何理解saas概念？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+  
+
+          </div>
+          
+
+  
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+
+      
+      
+      
+
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+   
+
+         
+      
+
+     
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">197</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+               
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+        
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">108</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          <div>
+          <div style="text-align:center;margin:auto;color:blue;margin-top:10px;">微信公众号</div>
+        
+          <div style="text-align:center;margin:auto;">每日学习python必备</div>
+          <img src="https://i.postimg.cc/NfTf3XL8/qrcode-for-gh-65701a2ee4d5-258.jpg">
+          
+          </div>
+
+          
+
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+         
+          
+          </div>
+       <!--近期文章版块 began-->
+  
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <i class="fa fa-history fa-" aria-hidden="true"></i>
+          近期文章
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/08/01/coding-6/" title="顶级黑客——天才少年被抓，将面临30项指控" target style="color:blue;">顶级黑客——天才少年被抓，将面临30项指控</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-5/" title="IEEE Spectrum 2020度程序语言排行榜" target style="color:blue;">IEEE Spectrum 2020度程序语言排行榜</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-2/" title="表哥的故事：利用互联网的信息不对称成就伟大的事业" target style="color:blue;">表哥的故事：利用互联网的信息不对称成就伟大的事业</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/mysql-2/" title="CentOS 8上安装MySQL 8.0" target style="color:blue;">CentOS 8上安装MySQL 8.0</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-1/" title="乱象之《平安经》节选" target style="color:blue;">乱象之《平安经》节选</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-4/" title="互联网前沿报导" target style="color:blue;">互联网前沿报导</a>
+            </li>
+          
+        </ul>
+      </div>
+  
+<!--近期文章版块 end-->
+         
+   
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xwtech.site/" title="https://xwtech.site/" rel="noopener" target="_blank">karl科技站</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+
+
+
+          
+            
+          
+           
+
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <!--近期文章版块 began-->
+  
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <i class="fa fa-history fa-" aria-hidden="true"></i>
+          近期文章
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/08/01/coding-6/" title="顶级黑客——天才少年被抓，将面临30项指控" target style="color:blue;">顶级黑客——天才少年被抓，将面临30项指控</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-5/" title="IEEE Spectrum 2020度程序语言排行榜" target style="color:blue;">IEEE Spectrum 2020度程序语言排行榜</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-2/" title="表哥的故事：利用互联网的信息不对称成就伟大的事业" target style="color:blue;">表哥的故事：利用互联网的信息不对称成就伟大的事业</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/mysql-2/" title="CentOS 8上安装MySQL 8.0" target style="color:blue;">CentOS 8上安装MySQL 8.0</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-1/" title="乱象之《平安经》节选" target style="color:blue;">乱象之《平安经》节选</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-4/" title="互联网前沿报导" target style="color:blue;">互联网前沿报导</a>
+            </li>
+          
+        </ul>
+      </div>
+  
+<!--近期文章版块 end--><br><br><br>
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#field参数"><span class="nav-number">1.</span> <span class="nav-text">field参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HiddenField"><span class="nav-number">2.</span> <span class="nav-text">HiddenField</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ModelSerializer需要解决的2个问题"><span class="nav-number">3.</span> <span class="nav-text">ModelSerializer需要解决的2个问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Validation自定义验证逻辑"><span class="nav-number">4.</span> <span class="nav-text">Validation自定义验证逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#联合validate"><span class="nav-number">4.1.</span> <span class="nav-text">联合validate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Validators"><span class="nav-number">4.2.</span> <span class="nav-text">Validators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于外键的serializers"><span class="nav-number">4.3.</span> <span class="nav-text">关于外键的serializers</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+      
+      
+    </div>
+  </aside>
+  
+
+  
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaowei</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js"></script>
+
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+</body>
+</html>

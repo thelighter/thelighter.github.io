@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN,en">
+<head><meta name="generator" content="Hexo 3.8.0">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7384725227124412",
+          enable_page_level_ads: true
+     });
+</script>
+
+<script data-ad-client="ca-pub-7384725227124412" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137361931-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-137361931-1');
+</script>
+
+
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css">
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fav.png?v=7.0.0">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+
+  <meta name="description" content="抵抗劫持从我做起！">
+<meta name="keywords" content="python,AI,人工智能,爬虫,scrapy,django,flask,web,python-web,java,php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运营商劫持分类和解决办法">
+<meta property="og:url" content="https://thelighter.github.io/2020/01/24/jiechi/index.html">
+<meta property="og:site_name" content="python爱好者">
+<meta property="og:description" content="抵抗劫持从我做起！">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-27T12:53:11.525Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="运营商劫持分类和解决办法">
+<meta name="twitter:description" content="抵抗劫持从我做起！">
+
+
+
+
+
+
+  <link rel="canonical" href="https://thelighter.github.io/2020/01/24/jiechi/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>运营商劫持分类和解决办法 | python爱好者</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<amp-auto-ads type="adsense" data-ad-client="ca-pub-7384725227124412">
+</amp-auto-ads>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">python爱好者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">专注于python 全栈开发<br></h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-coding">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/coding/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>程序员指南</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-resume">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/resume" rel="section"><i class="menu-item-icon fa fa-fw fa-star"></i> <br>resume</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-github">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="https://github.com/thelighter" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-github"></i> <br>github</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+   
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://thelighter.github.io/2020/01/24/jiechi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小伟科技">
+      <meta itemprop="description" content="一个专注于python编程，网站开发，app开发的网站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="python爱好者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">运营商劫持分类和解决办法
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+        
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-24 11:01:09" itemprop="dateCreated datePublished" datetime="2020-01-24T11:01:09+08:00">2020-01-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-07-27 20:53:11" itemprop="dateModified" datetime="2020-07-27T20:53:11+08:00">2020-07-27</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>抵抗劫持从我做起！<br><a id="more"></a></p>
+<ol>
+<li>引言</li>
+</ol>
+<p>0x1: 原始的 DNS 投毒(DNS劫持)</p>
+<p>DNS 作为互联网的基础设施之一，起到把域名转换成 IP 地址的作用，比如 <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> –&gt; 115.239.211.112 。<br>各大运营商通常会以省为单位建设 2-4 台递归(或缓存)DNS 给用户使用，在 PPPoE 拨号时自动配置。 假若用户输错了域名，正常情况下 DNS 服务器会返回 NXDOMAIN(nonexistent domain)错误，然后浏览器或应用程序会报「域名无法解析」错误<br>运营商通常会对 NXDOMAIN 结果进行污染，返回一个假冒的 IP 地址，这个 IP 地址指向运营商的服务器，于是你便看到了「贴心」的满屏广告的各种网址纠错页。<br>这种方式简单粗暴，用户一般也不会太反感，而且似乎也不会违反任何法律法规</p>
+<p>0x2: 所谓的「良性」劫持(TCP劫持)</p>
+<p>用户跨运营商访问网络时，运营商可能需要为用户支付网间结算费用。比如中国移动宽带用户访问位于中国电信网络的服务器，中国移动必须为这些流量或带宽支付给中国电信网间结算费用<br>由于众所周知的原因，网间结算费用十分昂贵，为了节省网间互联费用，部分运营商部署了缓存服务器，在用户跨网访问时，采用技术手段将用户与目标服务器的连接劫持到自家的缓存服务器上</p>
+<p>全站 HTTPS 是大势所趋，可以预见，在 HTTPS 流量越来越多的前提下，缓存劫持将变得越来越没有意义。和各大网站合作发展 CDN 才是王道<br>0x3: 「良性」劫持的危害(网间访问缓存)</p>
+<p>复制代码</p>
+<ol>
+<li><p>可能造成网站和 APP 功能故障<br> 1) 运营商的网间缓存更新时间及失效时间对用户和网站不可控，缓存的旧数据和新数据无法在时间上保持一致性，可能引发一些”奇怪”的问题。比如</p>
+<pre><code>1.1) 好多软件的最新版本下载地址是不变的，由于缓存的原因会让你一直下载到旧版本。这可能会影响到部分软件的自动更新、自动升级功能
+1.2) 还有如网页中部分资源引用到旧数据导致网页排版和功能异常，验证码被缓存导致验证码怎么都输不对等问题 
+</code></pre><p> 2) 由于劫持的方式是使用 HTTP 302 重定向指令，有的应用可能只接受 HTTP 200 OK 为正确的响应，不会识别 HTTP 302 Found 指令，造成通信故障。<br> 3) 劫持后网址发生变化，可能会触发浏览器和部分程序的跨站保护功能，导致网页上的脚本程序无法执行。或者由于相对路径发生变化导致 HTTP 404 错误<br> 4) 从技术上缓存系统只能通过 URL 来区别不同的资源，不能识别具有相同 URL 的不同资源，这会导致资源加载错误。比如</p>
+<pre><code>4.1) 看视频时，出现前一段和后一段内容不一致
+4.2) 下载 Windows 7 系统的驱动结果下载完成后发现是 Windows XP 的驱动
+4.3) 带有敏感用户信息的文件被缓存后对所有人可见等安全问题 
+</code></pre></li>
+<li><p>缓存服务器具备篡改或出售缓存数据的隐患，对信息安全不利。目前部分地区的用户已经在网上讨论过下载 A 软件却被替换成 B 软件的情况 </p>
+</li>
+<li>缓存服务器故障时，会造成大量用户”部分URL断网” </li>
+<li>缓存服务器带宽和处理性能有限，据网上反映由于缓存服务器经常报 HTTP 403、502 错误，导致资源无法加载，或由于缓存服务器超载导致加载速度缓慢  </li>
+<li>缓存服务器可能触发部分网站的反爬虫(反机器人)、反盗链机制，缓存的内容是服务器报错信息，导致资源无法加载 </li>
+<li>破坏了 URL 对用户的透明性。假设用户将劫持后的链接分享给其他人，而联通对缓存服务器做了访问控制，将会导致链接无法在外部打开；另外如果缓存失效而又没有及时更新的话，可能导致用户无法通过此 URL 访问被引用的资源 </li>
+<li>损害了 IDC 和 CDN 的利益，此种网络劫持使 IDC 和 CDN 的流量大幅减少，影响 IDC 和 CDN 的流量收入 </li>
+<li>目前联通的劫持依靠 TCP 抢答的方式，但原始数据包还是会到达目标服务器并被正确响应。造成的结果就是<br> 1) 虽然你访问资源时被 HTTP 302 数据包重定向到了联通的缓存服务器，但原目标服务器的 HTTP 200 响应还是会被送到用户端，且由于得不到用户端的确定不断触发超时重传，极大地浪费了用户带宽<br> 2) ISP通过流量镜像的方法抢在原目标服务之前向用户端response了数据包，但原目标服务器的 HTTP 200 响应还是会被送到用户端，用户端收到这个”重复的response包”之后，会向原目标服务器发送RST包<br>复制代码<br>0x4: 采用 HTTP 302 跳转进行缓存劫持而不是直接反向代理篡改原始数据原因</li>
+</ol>
+<p>HTTP 302 跳转方式部署起来最容易，成本最低。因为不需要对原有设备进行改造，只需要在交换机上以分光并联的方式进行连接即可。劫持设备的 DPI(深度包检测)系统可以实时探测用户和正常服务器的通信内容，可根据网络状况、劫持服务器负载、用户身份、访问内容、劫持概率等按需进行劫持。劫持时，只要伪造目标服务器的身份抢在真正的服务器之前向用户发送一条 HTTP 302 报文让用户跳转到新地址即可完成劫持。劫持设备与路由设备分离，方便维护<br>而如果直接篡改原始数据，则需要对原有设备进行改造，串联进路由设备，对每一个通过的数据包进行探测，决定放行或劫持。由于无法从目的 IP 判断数据包应发往真正的服务器还是截持服务器，这种系统还要为每个用户维护一份连接会话信息来作区分。可以想象的是，这套系统将对网络性能产生巨大的负面影响，并且难以维护</p>
+<p>0x5: IPUSH</p>
+<ol>
+<li>网络定向直投系统(也称IPUSH)，是由中国电信开发的划时代网络技术，可以以各种格式定时、定点将广告推送到网络在线用户端的浏览主页面。通过这个传播平台,不论电信用户在IE浏览器地址栏中输入任何网址进行浏览，网络定向直投系统均可将广告主动送达用户，不依赖于某个固定的网站。可以自由选择目标市场区域，灵活投放，全面覆盖</li>
+<li>IPUSH提供用户在相关搜索引擎(百度、google)输入内容，系统通过输入内容中的关键字，向用户推送与关键字绑定的图片、动画等多媒体交互式广告内容</li>
+<li>根据用户访问的网站地址，推送与指定网站URL绑定的广告内容</li>
+<li>以区域为单位,以宽带用户为依托的电信级网关广告<br>网络定向直投广告的表现形式</li>
+</ol>
+<p>复制代码</p>
+<ol>
+<li><p>URL全屏定向直投<br>只要是指定地区的宽带用户上网浏览内容，系统就向其点对点推送广告，第一时间独占了目标受众的眼球</p>
+</li>
+<li><p>超级搜索引擎<br>根据受众在百度或者google进行关键字搜索的在线及时行为，自动触发与关键字绑定的广告，精准得出现在此类产品感兴趣的目标受众面前，在所有参与搜索引擎竞价排名的竞争对手中独占鳌头</p>
+</li>
+<li><p>用户上网行为广告推送<br>根据受众在网上浏览某个网站或网站的某个栏目，系统自动判断对产品感兴趣的受众，从而主动向该受众定向推送交互式的全屏广告<br>复制代码<br>网络定向方式</p>
+</li>
+<li><p>地域定向推送: 针对不同区域的用户，在指定时间段内上网，即自动跳出互动广告</p>
+</li>
+<li>关键字搜索: 可以在普通用户进行搜索行为时，根据预设的关键字自动跳出互动广告</li>
+<li>特定网址绑定: 绑定指定网站/页面，一旦用户访问相应网站/页面，自动跳出互动广告<br>目前存在的网络广告形式以弹出窗口、浮动广告、固定广告为主，但其局限广告在执行站点上展示，而且容易被浏览器或第三方软件所屏蔽。而网络定向直投的系统无论用户访问任何网页，都能及时收到由网络定向直投系统推送的广告，并且不会被目前已知的任何插件或空间屏蔽，极大的增加了广告投放的成功率</li>
+</ol>
+<p>通过置换页面的形式和电信网络的组合利用，避开各类软件的屏蔽</p>
+<ol start="2">
+<li>DNS劫持</li>
+</ol>
+<p>在中国，由于全国各地区被各个网络运营商分割，并且考虑到互相之间的利益关系以及网络访问速度，DNS解析的流程其实相当”复杂”，路径非常之多</p>
+<p>0x1: 运营商区域DNS Server遭到缓存投毒攻击</p>
+<p>CVE-2007-2926</p>
+<p>Relevant Link:</p>
+<p><a href="https://security.tencent.com/index.php/blog/msg/14" target="_blank" rel="noopener">https://security.tencent.com/index.php/blog/msg/14</a></p>
+<ol start="3">
+<li>HTTP 劫持</li>
+</ol>
+<p>HTTP 协议本身未提供任何的安全措施，你和服务器之间的通信可以被任何中间设备窃听、记录、篡改，甚至目标服务器本身都可以伪造</p>
+<ol>
+<li>上网时正常页面被植入广告或恶意代码，连使用手机 APP 都不能幸免</li>
+<li>上 A 网站却有一定机率被跳转到 B 网站</li>
+<li>访问网站被多次跳转并被添加返利小尾巴等<br>由于信息不加密，意味著运营商可以随意记录并出售你的上网数据。更为安全的 HTTPS 协议则完全没有上述提到的问题，只要你别忽略浏览器的报的证书错误(如访问 12306.cn 时)，你和服务器之间的连接就是安全的。之前淘宝没启用 HTTPS 加密连接之前，经常有人在淘宝上买完东西后马上收到诈骗电话，订单号、收件人等各种私密信息均被泄露，估计和某些运营商脱不了关系，这种劫持属于违法甚至犯罪行为<br>目前，国内外的许多网站已开启全站 HTTPS 加密，如 Google 的各类产品(包括 YouTube)、 Facebook 、 Twitter 、 Wikipedia 、淘宝、天猫、百度搜索。另外知乎和 V2EX 都已支持 HTTPS 方式访问(但没有强制 HTTPS)，听京东的同学讲京东也正在测试全站 HTTPS 。 Google 已经表示对于启用全站 HTTPS 的站点，在搜索排名上会优先显示，鼓励各网站启用 HTTPS 。新版的 Chrome 和 Firefox 浏览器已经支持速度更快的 HTTP/2 ，但只支持启用了 HTTPS 的站点。可见，将来会有越来越多的网站转而使用 HTTPS ，明文的 HTTP 会被冷落， HTTP 劫持终会成为历史</li>
+</ol>
+<p>0x1: 运营商HTTP劫持的原理</p>
+<p>在用户的浏览器连上被访问的网站服务器，发送了HTTP请求后，运营商的路由器会首先收到此次HTTP请求，之后运营商路由器的旁路设备标记此TCP连接为HTTP协议，之后可以抢在网站服务器返回数据之前发送HTTP协议的302代码进行下载软件的劫持，浏览器收到302代码后就会跳转到错误的软件下载地址下载软件了，随后网站服务器的真正数据到达后反而会被丢弃(客户端会向原目标server发送RST包)，或者，旁路设备在标记此TCP连接为HTTP协议后，直接返回修改后的HTML代码，导致浏览器中被插入了运营商的广告，随后网站服务器的真正数据到达后最终也是被丢弃</p>
+<ol>
+<li>客户端C向服务器S发出一个HTTP请求 </li>
+<li>运营商网关将该请求分光(复制)送到缓存服务器 </li>
+<li>缓存服务器如果发现命中缓存，则伪装成S返回一个302响应，该响应通常比S的正确响应早到，因此C接受了该响应，而忽略了S的响应，从而跳转到缓存服务器取数据<br>//这同时也是伟大的墙发送RST的方法<br>0x2: 劫持的现象</li>
+</ol>
+<p>ISP运营商抢在原始目标Server之前向客户端发送Response回包，回包的内容已经是”劫持后的数据”，劫持的形式包括</p>
+<p>复制代码</p>
+<ol>
+<li>ISP直接返回一个302<br> 1) 跳转到一个新的URL(例如404页面)<br> 2) 继续跳转原始URL，但是在尾部加上”小尾巴”，例如广告联盟(包括返利): <a href="http://www.baidu.com/s?wd=test&amp;tn=SE_pshl0065_bassux8m。这个&quot;小尾巴&quot;表示来源渠道商，用户带上这个小尾巴访问目标网站后(例如百度)，目标网站需要向广告联盟支付推广费用，TCP流量劫持参与者就可以从中获利" target="_blank" rel="noopener">www.baidu.com/s?wd=test&amp;tn=SE_pshl0065_bassux8m。这个&quot;小尾巴&quot;表示来源渠道商，用户带上这个小尾巴访问目标网站后(例如百度)，目标网站需要向广告联盟支付推广费用，TCP流量劫持参与者就可以从中获利</a></li>
+<li>ISP在原始网页(缓存中)中增加新内容<br> 1) iframe:  <frame src="http://zgshihu.com/z/z_sz.php" name="fb" frameborder="0"><br> 2) js跳转链接: <script type="text/javascript">parent.location.href=”<a href="http://www.amazon.cn?tag=eqifa5307-23&amp;ascsubtag=704747|1|&quot;">http://www.amazon.cn?tag=eqifa5307-23&amp;ascsubtag=704747|1|&quot;</a>; </script><br>复制代码<br>比较典型的是将大型电商网站的流量导到返利联盟，通过返利联盟获得当前用户成交金额的返利</li>
+</ol>
+<ol start="4">
+<li><p>路由软件中植入劫持代码、用户PC本地木马</p>
+</li>
+<li><p>劫持弹广告检测、防御手段</p>
+</li>
+</ol>
+<p>0x3: HTTPS</p>
+<p>0x4: TTL检测</p>
+<p>一般 ISP 劫持的时候不会去处理 TTL 。理论上可以根据 TTL 来追踪到哪一点出了问题，一次TCP会话中TTL值相差很大或者IPId突然跳变</p>
+<p>0x5: 攻击源定位</p>
+<p>复制代码</p>
+<ol>
+<li>tracert 被劫持的目标网站IP，得到每一跳的路由IP，并且得到一个正常情况下的Standar TTL<br>//TCP劫持设备(旁路侦听数据包)一般是基于包而非状态的，我们构造被侦听的数据包(也就是直接发出访问目前Server IP的HTTP请求TCP 包，不需要三次握手)多次发送，TTL值从1开始递增，精确地传递数据包到每一个路径上，直到出现伪造响应——没有问题的位置是不会有响应的，第一个出现 伪造响应的位置就是出问题的位置</li>
+<li>用python的Scapy向目标被劫持Server IP发送TCP包，TTL从0开始递增</li>
+<li>正常情况下TTL只有到达Standar TTL才会收到目标Server的正常回包，但是如果链路上发生了TCP劫持，在TTL还未到达Standar TTL之前就会收到正常回包，因为旁路劫持设备不会去检测请求包的TTL词，它会以为当前收到的请求包是一个正常的访问请求，会尝试抢在原始目标Server之前发送缓存中的数据包</li>
+<li>在客户端看到的现象就是会收到一个Time-to-live Exceeded的ICMP包、以及一个来自原始Server IP的正常回包<br>复制代码<br>0x6: Id(Identification)检测</li>
+</ol>
+<p>例如真实包的TTL是53，Id是按顺序自增的，而伪造的包的TTL是64，Id始终是0</p>
+<p>技术分享</p>
+<p>技术分享</p>
+<p>0x7: Scapy检测脚本</p>
+<p>复制代码</p>
+<p>#!/bin/python</p>
+<h1 id><a href="#" class="headerlink" title=" "></a> </h1><p># </p>
+<p>import sys<br>from scapy.all import *<br>conf.verb=0</p>
+<p>print “TCP Hijacking Delector by lake2”<br>print “[+] Sniffing ….”<br>ip_arr = {}<br>while 1:<br>    a=sniff( filter=”tcp and src host not 10.26.234.44”, count=50)<br>    for b in a:<br>        ip_src = b.sprintf(r”%IP.src%”)<br>        ip_ttl = b.sprintf(r”%IP.ttl%”)<br>        if ip_arr.has_key(ip_src):<br>            c = int(ip_ttl) - int(ip_arr[ip_src])<br>            if abs(c) &gt; 4:<br>                print ip_src + “ has been hijacking !!!   current pack‘s ttl : “ + str(ip_ttl) + “  <-> “ + str(ip_arr[ip_src])<br>        else:<br>            ip_arr[ip_src] = ip_ttl<br>    print “=&gt;”<br>复制代码<br>0x8: iptables阻断劫持设备抢先返回的劫持包</-></p>
+<p>iptables -A FORWARD -p tcp –sport 80 -m string –string “Location: <a href="http://59.108.200.39&quot;" target="_blank" rel="noopener">http://59.108.200.39&quot;</a> –algo bm -j DROP<br>//该规则的意义是，如果某个HTTP响应包中含有 Location: <a href="http://59.108.200.39" target="_blank" rel="noopener">http://59.108.200.39</a> 字样，就直接丢弃。这样后续S真实的响应包就能被客户端接收，从而保证正确的通信</p>
+<ol start="6">
+<li><p>检测方案</p>
+</li>
+<li><p>从流量中过滤出RST包，并保存dst ip</p>
+</li>
+<li>这些dst ip可能是遭到了ISP的TCP劫持，这些ip相当于一个”高疑似度IP”，很有可能是电商、大型网站</li>
+<li>下一步需要拿全国各省各市的ADSL拨号，拨入对应城市三级ISP的网络中</li>
+<li>循环发1000 TCP包，检测这个过程中是否发生”TTL波动”，即如果当地存在ISP TCP劫持，则收到的TTL值和访问正常网站的TTL值多数情况下会不一样，即使运营商采取了随机插入的策略，在多次(1000次以上)访问过程中，也有很大几率产生TTL差值波动</li>
+<li>最终得到的是存在ISP TCP劫持的ISP城市</li>
+</ol>
+<h1 id="针对以上的解决办法"><a href="#针对以上的解决办法" class="headerlink" title="针对以上的解决办法"></a>针对以上的解决办法</h1><h2 id="打电话投诉你的ISP"><a href="#打电话投诉你的ISP" class="headerlink" title="打电话投诉你的ISP"></a>打电话投诉你的ISP</h2><p>第二天就抓起电话怒喷运营商，当天他们就派了技术上门，在向其演示劫持现象并展示抓包后，他说会向上面反映巴拉巴拉。几天后，劫持停止。看v2ex的讨论，好像那段时间全国的联通都被劫持，后来可能因为投诉太多就停止了。</p>
+<h2 id="在路由器或浏览器安装广告屏蔽工具"><a href="#在路由器或浏览器安装广告屏蔽工具" class="headerlink" title="在路由器或浏览器安装广告屏蔽工具"></a>在路由器或浏览器安装广告屏蔽工具</h2><p>居家必备。在这里想特别提一下safari也可以加载插件来屏蔽广告，个人觉得AdBlock的效果还不错。当然更彻底的方法是用Surge将相关域名block掉。当然这两项功能都需要IOS9的支持。</p>
+<h2 id="尽量用HTTPS访问网站"><a href="#尽量用HTTPS访问网站" class="headerlink" title="尽量用HTTPS访问网站"></a>尽量用HTTPS访问网站</h2><p>厌倦了访问百度时被加上?hao=xxxxx的尾巴吗？访问<a href="https://www.baidu.com/吧。不过现在的Chrome好像都能够自动跳转到HTTPS。" target="_blank" rel="noopener">https://www.baidu.com/吧。不过现在的Chrome好像都能够自动跳转到HTTPS。</a></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+    
+    <div>
+    
+      
+    </div>
+    
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="https://i.postimg.cc/NfTf3XL8/qrcode-for-gh-65701a2ee4d5-258.jpg" alt="小伟科技 wechat" style="width: 200px; max-width: 100%;">
+  <div>python爱好者公众号—每日学习python必备</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎打赏支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://xwtech.site/wp-content/uploads/2020/01/ce982e7d8fa326d.png" alt="小伟科技 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://xwtech.site/wp-content/uploads/2020/01/08a4f7debf5256c.png" alt="小伟科技 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小伟科技</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://thelighter.github.io/2020/01/24/jiechi/" title="运营商劫持分类和解决办法">https://thelighter.github.io/2020/01/24/jiechi/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/24/git-vscode/" rel="next" title="如何使用vscode不必经常输入GitHub账号密码">
+                <i class="fa fa-chevron-left"></i> 如何使用vscode不必经常输入GitHub账号密码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/30/sphinx/" rel="prev" title="sphinx教程，免费搭建你的文档网站">
+                sphinx教程，免费搭建你的文档网站 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+  
+
+          </div>
+          
+
+  
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+
+      
+      
+      
+
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+   
+
+         
+      
+
+     
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">197</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+               
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+        
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">108</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          <div>
+          <div style="text-align:center;margin:auto;color:blue;margin-top:10px;">微信公众号</div>
+        
+          <div style="text-align:center;margin:auto;">每日学习python必备</div>
+          <img src="https://i.postimg.cc/NfTf3XL8/qrcode-for-gh-65701a2ee4d5-258.jpg">
+          
+          </div>
+
+          
+
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+         
+          
+          </div>
+       <!--近期文章版块 began-->
+  
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <i class="fa fa-history fa-" aria-hidden="true"></i>
+          近期文章
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/08/01/coding-6/" title="顶级黑客——天才少年被抓，将面临30项指控" target style="color:blue;">顶级黑客——天才少年被抓，将面临30项指控</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-5/" title="IEEE Spectrum 2020度程序语言排行榜" target style="color:blue;">IEEE Spectrum 2020度程序语言排行榜</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-2/" title="表哥的故事：利用互联网的信息不对称成就伟大的事业" target style="color:blue;">表哥的故事：利用互联网的信息不对称成就伟大的事业</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/mysql-2/" title="CentOS 8上安装MySQL 8.0" target style="color:blue;">CentOS 8上安装MySQL 8.0</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-1/" title="乱象之《平安经》节选" target style="color:blue;">乱象之《平安经》节选</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-4/" title="互联网前沿报导" target style="color:blue;">互联网前沿报导</a>
+            </li>
+          
+        </ul>
+      </div>
+  
+<!--近期文章版块 end-->
+         
+   
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xwtech.site/" title="https://xwtech.site/" rel="noopener" target="_blank">karl科技站</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+
+
+
+          
+            
+          
+           
+
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <!--近期文章版块 began-->
+  
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <i class="fa fa-history fa-" aria-hidden="true"></i>
+          近期文章
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/08/01/coding-6/" title="顶级黑客——天才少年被抓，将面临30项指控" target style="color:blue;">顶级黑客——天才少年被抓，将面临30项指控</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-5/" title="IEEE Spectrum 2020度程序语言排行榜" target style="color:blue;">IEEE Spectrum 2020度程序语言排行榜</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-2/" title="表哥的故事：利用互联网的信息不对称成就伟大的事业" target style="color:blue;">表哥的故事：利用互联网的信息不对称成就伟大的事业</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/mysql-2/" title="CentOS 8上安装MySQL 8.0" target style="color:blue;">CentOS 8上安装MySQL 8.0</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/zawen-1/" title="乱象之《平安经》节选" target style="color:blue;">乱象之《平安经》节选</a>
+            </li>
+          
+            <li class="my-links-of-blogroll-li">
+             <i class="fa fa-heart" aria-hidden="true"></i> <a href="/2020/07/29/coding-4/" title="互联网前沿报导" target style="color:blue;">互联网前沿报导</a>
+            </li>
+          
+        </ul>
+      </div>
+  
+<!--近期文章版块 end--><br><br><br>
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#针对以上的解决办法"><span class="nav-number">2.</span> <span class="nav-text">针对以上的解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打电话投诉你的ISP"><span class="nav-number">2.1.</span> <span class="nav-text">打电话投诉你的ISP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在路由器或浏览器安装广告屏蔽工具"><span class="nav-number">2.2.</span> <span class="nav-text">在路由器或浏览器安装广告屏蔽工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尽量用HTTPS访问网站"><span class="nav-number">2.3.</span> <span class="nav-text">尽量用HTTPS访问网站</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+      
+      
+    </div>
+  </aside>
+  
+
+  
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaowei</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js"></script>
+
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+</body>
+</html>
