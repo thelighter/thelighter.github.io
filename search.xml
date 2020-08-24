@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>微信小程序加密不支持btoa的解决方法，window.btoa报错解决办法</title>
+    <url>/2020/08/24/weixin-8/</url>
+    <content><![CDATA[<p>window.btoa报错解决办法<br><a id="more"></a></p>
+<p>小程序中没有window对象，所以btoa使用不了</p>
+<p>这里自己做一个 base64加密的工具</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function base64_encode(str) &#123;</span><br><span class="line">  var c1, c2, c3;</span><br><span class="line">  var base64EncodeChars = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;;</span><br><span class="line">  var i = 0, len = str.length, string = &apos;&apos;;</span><br><span class="line"></span><br><span class="line">  while (i &lt; len) &#123;</span><br><span class="line">    c1 = str.charCodeAt(i++) &amp; 0xff;</span><br><span class="line">    if (i == len) &#123;</span><br><span class="line">      string += base64EncodeChars.charAt(c1 &gt;&gt; 2);</span><br><span class="line">      string += base64EncodeChars.charAt((c1 &amp; 0x3) &lt;&lt; 4);</span><br><span class="line">      string += &quot;==&quot;;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">    c2 = str.charCodeAt(i++);</span><br><span class="line">    if (i == len) &#123;</span><br><span class="line">      string += base64EncodeChars.charAt(c1 &gt;&gt; 2);</span><br><span class="line">      string += base64EncodeChars.charAt(((c1 &amp; 0x3) &lt;&lt; 4) | ((c2 &amp; 0xF0) &gt;&gt; 4));</span><br><span class="line">      string += base64EncodeChars.charAt((c2 &amp; 0xF) &lt;&lt; 2);</span><br><span class="line">      string += &quot;=&quot;;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">    c3 = str.charCodeAt(i++);</span><br><span class="line">    string += base64EncodeChars.charAt(c1 &gt;&gt; 2);</span><br><span class="line">    string += base64EncodeChars.charAt(((c1 &amp; 0x3) &lt;&lt; 4) | ((c2 &amp; 0xF0) &gt;&gt; 4));</span><br><span class="line">    string += base64EncodeChars.charAt(((c2 &amp; 0xF) &lt;&lt; 2) | ((c3 &amp; 0xC0) &gt;&gt; 6));</span><br><span class="line">    string += base64EncodeChars.charAt(c3 &amp; 0x3F)</span><br><span class="line">  &#125;</span><br><span class="line">  return string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用这个方法可用对代码进行base64加密</p>
+]]></content>
+      <categories>
+        <category>微信</category>
+      </categories>
+  </entry>
+  <entry>
     <title>顶级黑客——天才少年被抓，将面临30项指控</title>
     <url>/2020/08/01/coding-6/</url>
     <content><![CDATA[<p>顶级黑客——天才少年被抓，将面临30项指控<br><a id="more"></a></p>
@@ -2065,23 +2078,6 @@ Ctrl + Shift +</code> 新建终端<br>Command + Up 向上滚动<br>Command + Dow
       </tags>
   </entry>
   <entry>
-    <title>2020年最新flask-sqlalchemy用法总结(2)</title>
-    <url>/2020/02/11/flask-sqlalchemy2/</url>
-    <content><![CDATA[<p>最全的flask-sqlalchemy用法总结<br><a id="more"></a></p>
-<h1 id="SQLAlchemy常用数据类型"><a href="#SQLAlchemy常用数据类型" class="headerlink" title="SQLAlchemy常用数据类型"></a>SQLAlchemy常用数据类型</h1><p>Integer：整形，映射到数据库中是int类型。<br>Float：浮点类型，映射到数据库中是float类型。他占据的32位。<br>Double：双精度浮点类型，映射到数据库中是double类型，占据64位。<br>String：可变字符类型，映射到数据库中是varchar类型.<br>Boolean：布尔类型，映射到数据库中的是tinyint类型。<br>DECIMAL：定点类型。是专门为了解决浮点类型精度丢失的问题的。<br>Enum：枚举类型。指定某个字段只能是枚举中指定的几个值，不能为其他值。在ORM模型中，使用<br>Date：存储时间，只能存储年月日。映射到数据库中是date类型<br>DateTime：存储时间，可以存储年月日时分秒毫秒等<br>Time：存储时间，可以存储时分秒。映射到数据库中也是time类型<br>Text：存储长字符串。一般可以存储6W多个字符<br>LONGTEXT：长文本类型，映射到数据库中是longtext类型</p>
-<ul>
-<li>Enum：枚举类型用法<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">class TagEnum(enum.Enum):</span><br><span class="line">    python = &quot;python&quot;</span><br><span class="line">    flask = &quot;flask&quot;</span><br><span class="line">    django = &quot;django&quot;</span><br><span class="line"></span><br><span class="line">class Article(Base):</span><br><span class="line">    __tablename__ = &apos;article&apos;</span><br><span class="line">    id = Column(Integer,primary_key=True,autoincrement=True)</span><br><span class="line">    tag = Column(Enum(TagEnum))</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/04/25/flask-sqlalchemy-3/">sqlalchemy时间过滤How to filter date field?</a></li><li><a href="https://thelighter.github.io/2020/02/11/flask-sqlalchemy/">2020年最新flask-sqlalchemy用法总结(1)</a></li><li><a href="https://thelighter.github.io/2020/02/07/flask-time/">如何在Flask_sqlalchemy中查询时间段或者时间点？</a></li></ul></div>]]></content>
-      <categories>
-        <category>flask-sqlalchemy</category>
-      </categories>
-      <tags>
-        <tag>flask-sqlalchemy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2020年最新flask-sqlalchemy用法总结(1)</title>
     <url>/2020/02/11/flask-sqlalchemy/</url>
     <content><![CDATA[<p>flask-sqlalchemy一看就会<br><a id="more"></a></p>
@@ -2133,6 +2129,23 @@ mysql&gt; SELECT @@tx_isolation;
 mysql&gt; set global transaction isolation level read committed;
 mysql&gt; set session transaction isolation level read committed;
 </code></pre><div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/04/25/flask-sqlalchemy-3/">sqlalchemy时间过滤How to filter date field?</a></li><li><a href="https://thelighter.github.io/2020/02/11/flask-sqlalchemy2/">2020年最新flask-sqlalchemy用法总结(2)</a></li><li><a href="https://thelighter.github.io/2020/02/07/flask-time/">如何在Flask_sqlalchemy中查询时间段或者时间点？</a></li></ul></div>]]></content>
+      <categories>
+        <category>flask-sqlalchemy</category>
+      </categories>
+      <tags>
+        <tag>flask-sqlalchemy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2020年最新flask-sqlalchemy用法总结(2)</title>
+    <url>/2020/02/11/flask-sqlalchemy2/</url>
+    <content><![CDATA[<p>最全的flask-sqlalchemy用法总结<br><a id="more"></a></p>
+<h1 id="SQLAlchemy常用数据类型"><a href="#SQLAlchemy常用数据类型" class="headerlink" title="SQLAlchemy常用数据类型"></a>SQLAlchemy常用数据类型</h1><p>Integer：整形，映射到数据库中是int类型。<br>Float：浮点类型，映射到数据库中是float类型。他占据的32位。<br>Double：双精度浮点类型，映射到数据库中是double类型，占据64位。<br>String：可变字符类型，映射到数据库中是varchar类型.<br>Boolean：布尔类型，映射到数据库中的是tinyint类型。<br>DECIMAL：定点类型。是专门为了解决浮点类型精度丢失的问题的。<br>Enum：枚举类型。指定某个字段只能是枚举中指定的几个值，不能为其他值。在ORM模型中，使用<br>Date：存储时间，只能存储年月日。映射到数据库中是date类型<br>DateTime：存储时间，可以存储年月日时分秒毫秒等<br>Time：存储时间，可以存储时分秒。映射到数据库中也是time类型<br>Text：存储长字符串。一般可以存储6W多个字符<br>LONGTEXT：长文本类型，映射到数据库中是longtext类型</p>
+<ul>
+<li>Enum：枚举类型用法<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">class TagEnum(enum.Enum):</span><br><span class="line">    python = &quot;python&quot;</span><br><span class="line">    flask = &quot;flask&quot;</span><br><span class="line">    django = &quot;django&quot;</span><br><span class="line"></span><br><span class="line">class Article(Base):</span><br><span class="line">    __tablename__ = &apos;article&apos;</span><br><span class="line">    id = Column(Integer,primary_key=True,autoincrement=True)</span><br><span class="line">    tag = Column(Enum(TagEnum))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/04/25/flask-sqlalchemy-3/">sqlalchemy时间过滤How to filter date field?</a></li><li><a href="https://thelighter.github.io/2020/02/11/flask-sqlalchemy/">2020年最新flask-sqlalchemy用法总结(1)</a></li><li><a href="https://thelighter.github.io/2020/02/07/flask-time/">如何在Flask_sqlalchemy中查询时间段或者时间点？</a></li></ul></div>]]></content>
       <categories>
         <category>flask-sqlalchemy</category>
       </categories>

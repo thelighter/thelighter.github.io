@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://thelighter.github.io/2020/08/24/weixin-8/</loc>
+    
+    <lastmod>2020-08-24T15:44:52.498Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://thelighter.github.io/resume/index.html</loc>
     
     <lastmod>2020-08-01T10:14:31.882Z</lastmod>
@@ -961,14 +968,14 @@
   </url>
   
   <url>
-    <loc>https://thelighter.github.io/2020/02/11/flask-sqlalchemy2/</loc>
+    <loc>https://thelighter.github.io/2020/02/11/flask-sqlalchemy/</loc>
     
     <lastmod>2020-07-27T12:53:11.517Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://thelighter.github.io/2020/02/11/flask-sqlalchemy/</loc>
+    <loc>https://thelighter.github.io/2020/02/11/flask-sqlalchemy2/</loc>
     
     <lastmod>2020-07-27T12:53:11.517Z</lastmod>
     
