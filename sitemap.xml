@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://thelighter.github.io/2020/12/06/cheat/</loc>
+    
+    <lastmod>2020-12-06T14:58:30.951Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://thelighter.github.io/2020/08/24/weixin-8/</loc>
     
     <lastmod>2020-08-24T15:44:52.498Z</lastmod>
@@ -429,14 +436,14 @@
   </url>
   
   <url>
-    <loc>https://thelighter.github.io/2020/02/13/scrapy-attack/</loc>
+    <loc>https://thelighter.github.io/2020/02/13/scrapy-attack-en/</loc>
     
     <lastmod>2020-07-27T12:53:11.536Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://thelighter.github.io/2020/02/13/scrapy-attack-en/</loc>
+    <loc>https://thelighter.github.io/2020/02/13/scrapy-attack/</loc>
     
     <lastmod>2020-07-27T12:53:11.536Z</lastmod>
     
@@ -968,14 +975,14 @@
   </url>
   
   <url>
-    <loc>https://thelighter.github.io/2020/02/11/flask-sqlalchemy2/</loc>
+    <loc>https://thelighter.github.io/2020/02/11/flask-sqlalchemy/</loc>
     
     <lastmod>2020-07-27T12:53:11.517Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://thelighter.github.io/2020/02/11/flask-sqlalchemy/</loc>
+    <loc>https://thelighter.github.io/2020/02/11/flask-sqlalchemy2/</loc>
     
     <lastmod>2020-07-27T12:53:11.517Z</lastmod>
     
@@ -1346,14 +1353,14 @@
   </url>
   
   <url>
-    <loc>https://thelighter.github.io/2020/02/11/android-2/</loc>
+    <loc>https://thelighter.github.io/2020/02/11/android-1/</loc>
     
     <lastmod>2020-07-27T12:53:11.506Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://thelighter.github.io/2020/02/11/android-1/</loc>
+    <loc>https://thelighter.github.io/2020/02/11/android-2/</loc>
     
     <lastmod>2020-07-27T12:53:11.506Z</lastmod>
     

